@@ -555,7 +555,7 @@
     #preFigures .figure-body p,
     #postFigures .figure-body p {
       display: -webkit-box;
-      -webkit-line-clamp: 3;
+      -webkit-line-clamp: 4;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
@@ -1078,9 +1078,7 @@
       42% { transform: scale(1.16); box-shadow: 0 18px 36px rgba(45,22,13,.18); }
       100% { transform: translateY(-2px) scale(1); }
     }
-
-
-    /* Variant network inspection window: fixed frame, larger slices, faster auto-scroll */
+    /* Variant network inspection window: fixed frame, each page fits snugly without cropping */
     .variant-viewer .plate-media {
       height: min(76vh, 820px);
       max-height: min(76vh, 820px);
@@ -1101,7 +1099,7 @@
     }
     .variant-stack figure {
       margin: 0;
-      padding: 0;
+      padding: 18px 18px 10px;
       border: 0;
       border-bottom: 1px solid rgba(155,79,24,.12);
       line-height: 0;
@@ -1109,6 +1107,8 @@
       background: #fff;
       overflow: hidden;
       cursor: zoom-in;
+      height: 560px;
+      box-sizing: border-box;
     }
     .variant-stack figure:last-child {
       border-bottom: 0;
@@ -1118,24 +1118,25 @@
     }
     .variant-stack img {
       display: block;
-      width: 168%;
-      max-width: none;
-      height: auto;
-      margin: -7.5% 0 -7.5% 50%;
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      margin: 0;
       padding: 0;
       border: 0;
       border-radius: 0;
       background: #fff;
-      transform: translateX(-50%);
-      transform-origin: top center;
+      object-fit: contain;
+      object-position: center center;
+      transform: none;
     }
     .variant-viewer:hover .variant-stack img {
-      transform: translateX(-50%) scale(1.015);
+      transform: none;
     }
-
-    @media (max-width: 900px) {
-      .variant-stack img { width: 140%; margin: -5% 0 -5% 50%; }
+@media (max-width: 900px) {
       .variant-viewer .plate-media { height: 70vh; max-height: 70vh; }
+      .variant-stack figure { height: 440px; padding: 12px 12px 8px; }
       .page, .nav-inner { width: min(var(--max), calc(100vw - 28px)); }
       .nav-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
       .evolution-grid, .figure-grid.two, .figure-grid.three, .method-rail, .keypoint-strip { grid-template-columns: 1fr; }
@@ -1439,56 +1440,56 @@
       ];
 
       const datasetFigures = [
-        { no: 'Data 01', src: 'Bar.png', title: 'Coverage Statistics', body: 'This chart explains why the paper needs partial cross-era supervision rather than only complete five-era chains.' },
-        { no: 'Data 02', src: 'contextual_features.png', title: 'Feature Construction', body: 'This figure shows what information is preserved before the model learns evolutionary dynamics.' }
+        { no: 'Data 01', src: 'Bar.png', title: 'Coverage Statistics', body: 'This chart summarizes the data bottleneck: complete five-era chains are rare, but many partial cross-era links remain informative for learning script evolution.' },
+        { no: 'Data 02', src: 'contextual_features.png', title: 'Feature Construction', body: 'This figure shows how visual, structural, contextual, and temporal cues are assembled before the model learns evolutionary dynamics.' }
       ];
 
       const msefFigures = [
-        { no: 'MSEF 01', src: 'fig_framework_overview.png', title: 'MSEF Framework Overview', body: 'This is the roadmap of the method: continuous evolution creates candidates, and bidirectional verification checks them.', wide: true },
-        { no: 'MSEF 02', src: 'neural_ode_diagram.png', title: 'Neural ODE Dynamics', body: 'Neural ODEs provide the mechanism for moving a glyph representation from one historical era to another.' },
-        { no: 'MSEF 03', src: 'MSEF_Architecture_Diagram.png', title: 'Architecture', body: 'This architecture connects representation learning, transition dynamics, survival prediction, and verification.' }
+        { no: 'MSEF 01', src: 'fig_framework_overview.png', title: 'MSEF Framework Overview', body: 'This is the roadmap of the method: the upper part models continuous evolution across eras, while the lower part uses bidirectional verification to filter decipherment candidates.', wide: true },
+        { no: 'MSEF 02', src: 'neural_ode_diagram.png', title: 'Neural ODE Dynamics', body: 'Neural ODEs provide the transition mechanism: a glyph representation is moved smoothly from one historical era manifold to the next.' },
+        { no: 'MSEF 03', src: 'MSEF_Architecture_Diagram.png', title: 'Architecture', body: 'This architecture shows how feature extraction, manifold encoding, transition dynamics, survival prediction, and verification are connected in one pipeline.' }
       ];
 
       const preFigures = [
-        { no: 'Pre 01', src: 'pre1-abstraction.png', title: 'Invariant Core, Variant Surface', body: 'The key assumption: visual form changes, but a latent character identity can persist through time.' },
-        { no: 'Pre 02', src: 'pre4-clustering.png', title: 'Evolution Clusters', body: 'Clustered evolution patterns show why a single matching rule cannot cover all glyph histories.' },
-        { no: 'Pre 03', src: 'pre5-rule_system.png', title: 'Rule-System Explosion', body: 'This motivates learning a continuous model rather than enumerating brittle expert rules.' },
-        { no: 'Pre 04', src: 'pre6-neuralode.png', title: 'Why Neural ODEs', body: 'This connects the diagnostic argument to the Neural ODE formulation.' }
+        { no: 'Pre 01', src: 'pre1-abstraction.png', title: 'Invariant Core, Variant Surface', body: 'The key assumption is that visual form may change substantially while a latent character identity persists across historical stages.' },
+        { no: 'Pre 02', src: 'pre4-clustering.png', title: 'Evolution Clusters', body: 'Clustered evolution patterns show that different glyph families change in different ways, so a single matching rule cannot cover all histories.' },
+        { no: 'Pre 03', src: 'pre5-rule_system.png', title: 'Rule-System Explosion', body: 'This motivates learning a continuous model: hand-written rules become brittle when variants branch, disappear, or skip intermediate stages.' },
+        { no: 'Pre 04', src: 'pre6-neuralode.png', title: 'Why Neural ODEs', body: 'This connects the diagnostic argument to the Neural ODE formulation by treating historical change as a learnable trajectory rather than a discrete lookup.' }
       ];
 
       const cbedFigures = [
-        { no: 'CBED 01', src: 'fig4.png', title: 'Bidirectional Verification', body: 'Backward checking removes candidates that look plausible only in one direction.' },
-        { no: 'CBED 02', src: 'Scenario_C_Search_Space.png', title: 'Search Space Filtering', body: 'The search-space figure shows how CBED narrows many possible matches into a smaller consistent set.' }
+        { no: 'CBED 01', src: 'fig4.png', title: 'Bidirectional Verification', body: 'Backward checking removes candidates that look plausible in forward retrieval but fail to reconstruct the original OBI evidence when traced backward.' },
+        { no: 'CBED 02', src: 'Scenario_C_Search_Space.png', title: 'Search Space Filtering', body: 'The search-space figure shows how CBED starts from many possible matches and narrows them into a smaller set of historically consistent candidates.' }
       ];
 
       const postFigures = [
-        { no: 'Post 01', src: 'heatmap.png', title: 'Attention Heatmap', body: 'Attention maps show which parts of the glyph influence cross-era comparison.' },
-        { no: 'Post 02', src: 'saliency_ablation.png', title: 'Saliency Ablation', body: 'Ablation checks whether those highlighted regions actually matter for prediction.' },
-        { no: 'Post 03', src: 'velocity_topology.png', title: 'Velocity Topology', body: 'The vector field makes the learned transition dynamics more interpretable.' },
-        { no: 'Post 04', src: 'attention_circuits.png', title: 'Attention Circuits', body: 'Attention circuits show how information is routed during matching.' },
-        { no: 'Post 05', src: 'extinction_landscape.png', title: 'Survival Landscape', body: 'The survival landscape belongs to post-analysis because it explains what the survival module learns internally.' },
-        { no: 'Post 06', src: 'causal_patching_modified.png', title: 'Causal Patching', body: 'Causal patching tests which internal components are necessary for correct decipherment.' }
+        { no: 'Post 01', src: 'heatmap.png', title: 'Attention Heatmap', body: 'Attention maps show which glyph regions influence cross-era comparison, helping readers see whether the model attends to meaningful structure.' },
+        { no: 'Post 02', src: 'saliency_ablation.png', title: 'Saliency Ablation', body: 'Ablation checks whether highlighted regions are causally useful by testing how prediction changes when those regions are removed or weakened.' },
+        { no: 'Post 03', src: 'velocity_topology.png', title: 'Velocity Topology', body: 'The vector field makes learned transition dynamics more interpretable by showing the direction and organization of movement in the manifold.' },
+        { no: 'Post 04', src: 'attention_circuits.png', title: 'Attention Circuits', body: 'Attention circuits show how information is routed during matching, revealing whether the model links corresponding structural components across eras.' },
+        { no: 'Post 05', src: 'extinction_landscape.png', title: 'Survival Landscape', body: 'The survival landscape explains what the survival module learns internally: which evolutionary branches are likely to persist, split, or become extinct.' },
+        { no: 'Post 06', src: 'causal_patching_modified.png', title: 'Causal Patching', body: 'Causal patching tests which internal components are necessary for correct decipherment by perturbing representations and observing downstream effects.' }
       ];
 
       const plates = [
-        { kind: 'single', src: 'manifold_neighborhood.png', title: 'Manifold Neighborhood Visualization', body: 'This plate checks local geometry: nearby points should correspond to visually or semantically related glyphs.' },
-        { kind: 'single', src: 'dataset_finegrained.png', title: 'Fine-Grained Evolutionary Trajectories', body: 'This plate shows why fine-grained time matters: it preserves intermediate changes that coarse labels would hide.' },
-        { kind: 'single', src: 'gallery_full.png', title: 'Comprehensive Retrieval Gallery', body: 'This gallery lets readers inspect qualitative retrieval behavior across many cases.' },
+        { kind: 'single', src: 'manifold_neighborhood.png', title: 'Manifold Neighborhood Visualization', body: 'This plate checks local geometry: if the manifold is meaningful, nearby points should correspond to glyphs with related visual forms or semantic structure.' },
+        { kind: 'single', src: 'dataset_finegrained.png', title: 'Fine-Grained Evolutionary Trajectories', body: 'This plate shows why fine-grained time matters: intermediate OBI and Bronze stages preserve changes that would be hidden by coarse era labels.' },
+        { kind: 'single', src: 'gallery_full.png', title: 'Comprehensive Retrieval Gallery', body: 'This gallery lets readers inspect qualitative retrieval behavior across many cases, complementing aggregate accuracy with concrete examples.' },
         {
           kind: 'pages',
           title: 'Unconstrained Global Variant Network of Archaic Scripts',
-          body: 'The ten exported slices are stitched vertically into one continuous visual, so readers can inspect the oracle-bone and bronze-script cluster mappings without page breaks.',
+          body: 'The ten exported slices are stitched vertically into one continuous visual. The goal is to let readers inspect how oracle-bone clusters map to bronze-script clusters across the full variant network.',
           pages: [
-            { src: 'variant_network_large_page_01.png', label: 'Page 1', caption: 'Cluster mappings, slice 1.' },
-            { src: 'variant_network_large_page_02.png', label: 'Page 2', caption: 'Cluster mappings, slice 2.' },
-            { src: 'variant_network_large_page_03.png', label: 'Page 3', caption: 'Cluster mappings, slice 3.' },
-            { src: 'variant_network_large_page_04.png', label: 'Page 4', caption: 'Cluster mappings, slice 4.' },
-            { src: 'variant_network_large_page_05.png', label: 'Page 5', caption: 'Cluster mappings, slice 5.' },
-            { src: 'variant_network_large_page_06.png', label: 'Page 6', caption: 'Cluster mappings, slice 6.' },
-            { src: 'variant_network_large_page_07.png', label: 'Page 7', caption: 'Cluster mappings, slice 7.' },
-            { src: 'variant_network_large_page_08.png', label: 'Page 8', caption: 'Cluster mappings, slice 8.' },
-            { src: 'variant_network_large_page_09.png', label: 'Page 9', caption: 'Cluster mappings, slice 9.' },
-            { src: 'variant_network_large_page_10.png', label: 'Page 10', caption: 'Cluster mappings, slice 10.' }
+            { src: 'variant_network_large_page_01.png', label: 'Page 1', caption: 'Slice 1 of the global variant network, showing one contiguous region of oracle-bone and bronze-script cluster correspondences.' },
+            { src: 'variant_network_large_page_02.png', label: 'Page 2', caption: 'Slice 2 of the global variant network, showing one contiguous region of oracle-bone and bronze-script cluster correspondences.' },
+            { src: 'variant_network_large_page_03.png', label: 'Page 3', caption: 'Slice 3 of the global variant network, showing one contiguous region of oracle-bone and bronze-script cluster correspondences.' },
+            { src: 'variant_network_large_page_04.png', label: 'Page 4', caption: 'Slice 4 of the global variant network, showing one contiguous region of oracle-bone and bronze-script cluster correspondences.' },
+            { src: 'variant_network_large_page_05.png', label: 'Page 5', caption: 'Slice 5 of the global variant network, showing one contiguous region of oracle-bone and bronze-script cluster correspondences.' },
+            { src: 'variant_network_large_page_06.png', label: 'Page 6', caption: 'Slice 6 of the global variant network, showing one contiguous region of oracle-bone and bronze-script cluster correspondences.' },
+            { src: 'variant_network_large_page_07.png', label: 'Page 7', caption: 'Slice 7 of the global variant network, showing one contiguous region of oracle-bone and bronze-script cluster correspondences.' },
+            { src: 'variant_network_large_page_08.png', label: 'Page 8', caption: 'Slice 8 of the global variant network, showing one contiguous region of oracle-bone and bronze-script cluster correspondences.' },
+            { src: 'variant_network_large_page_09.png', label: 'Page 9', caption: 'Slice 9 of the global variant network, showing one contiguous region of oracle-bone and bronze-script cluster correspondences.' },
+            { src: 'variant_network_large_page_10.png', label: 'Page 10', caption: 'Slice 10 of the global variant network, showing one contiguous region of oracle-bone and bronze-script cluster correspondences.' }
           ]
         }
       ];
