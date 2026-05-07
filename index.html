@@ -1046,7 +1046,88 @@
       background: linear-gradient(rgba(255,255,255,0), #fff);
     }
     .plate.has-scroll-window .plate-copy::after {
-      content: 'Continuous visual plate · pause on pointer hover';
+      content: 'Continuous 10-slice visual plate · pause on pointer hover';
+    }
+
+
+    /* Guided glyph selection: a one-time seal-like pulse when the evolution panel enters view */
+    .char-tabs {
+      position: relative;
+    }
+    .char-tab {
+      will-change: transform;
+    }
+    .char-tabs.guide-bounce .char-tab {
+      animation: glyphChoiceBounce 680ms cubic-bezier(.2, 1.2, .2, 1) both;
+      animation-delay: calc(var(--i, 0) * 86ms);
+    }
+    .char-tab.just-selected {
+      animation: glyphSelectedPop 380ms cubic-bezier(.2, 1.25, .2, 1) both;
+    }
+    @keyframes glyphChoiceBounce {
+      0% { transform: translateY(0) scale(1); box-shadow: none; }
+      35% { transform: translateY(-8px) scale(1.13); box-shadow: 0 16px 30px rgba(45,22,13,.15); }
+      62% { transform: translateY(2px) scale(.98); }
+      100% { transform: translateY(0) scale(1); }
+    }
+    @keyframes glyphSelectedPop {
+      0% { transform: scale(1); }
+      42% { transform: scale(1.16); box-shadow: 0 18px 36px rgba(45,22,13,.18); }
+      100% { transform: translateY(-2px) scale(1); }
+    }
+
+
+    /* Variant network inspection window: fixed frame, larger slices, faster auto-scroll */
+    .variant-viewer .plate-media {
+      height: min(72vh, 760px);
+      max-height: min(72vh, 760px);
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 0;
+      background: #fff;
+      border-top: 1px solid rgba(155,79,24,.14);
+      border-bottom: 1px solid rgba(155,79,24,.14);
+      border-radius: 0 0 18px 18px;
+      scroll-behavior: smooth;
+    }
+    .variant-stack {
+      display: block;
+      line-height: 0;
+      font-size: 0;
+      background: #fff;
+    }
+    .variant-stack figure {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-bottom: 1px solid rgba(155,79,24,.12);
+      line-height: 0;
+      font-size: 0;
+      background: #fff;
+      overflow: hidden;
+      cursor: zoom-in;
+    }
+    .variant-stack figure:last-child {
+      border-bottom: 0;
+    }
+    .variant-stack figure.is-missing {
+      display: none;
+    }
+    .variant-stack img {
+      display: block;
+      width: 128%;
+      max-width: none;
+      height: auto;
+      margin: 0 0 0 50%;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      transform: translateX(-50%);
+      transform-origin: top center;
+    }
+    .variant-viewer:hover .variant-stack img {
+      transform: translateX(-50%) scale(1.015);
     }
 
     @media (max-width: 900px) {
@@ -1060,6 +1141,15 @@
       #preFigures .figure-media, #postFigures .figure-media { height: 220px; min-height: 220px; max-height: 220px; }
 
       .stat-row { grid-template-columns: 1fr; }
+
+      .variant-viewer .plate-media {
+        height: 68vh;
+        max-height: 68vh;
+      }
+      .variant-stack img {
+        width: 112%;
+      }
+
       .plate-copy, .chapter-title { grid-template-columns: 1fr; }
     }
     @media (max-width: 560px) {
@@ -1382,14 +1472,18 @@
         {
           kind: 'pages',
           title: 'Unconstrained Global Variant Network of Archaic Scripts',
-          body: 'The six exported slices are stitched vertically into one continuous visual, so readers can inspect the oracle-bone and bronze-script cluster mappings without page breaks.',
+          body: 'The ten exported slices are stitched vertically into one continuous visual, so readers can inspect the oracle-bone and bronze-script cluster mappings without page breaks.',
           pages: [
-            { src: 'variant_network_large_page_01.png', label: 'Page 1', caption: 'Cluster mappings, page 1.' },
-            { src: 'variant_network_large_page_02.png', label: 'Page 2', caption: 'Cluster mappings, page 2.' },
-            { src: 'variant_network_large_page_03.png', label: 'Page 3', caption: 'Cluster mappings, page 3.' },
-            { src: 'variant_network_large_page_04.png', label: 'Page 4', caption: 'Cluster mappings, page 4.' },
-            { src: 'variant_network_large_page_05.png', label: 'Page 5', caption: 'Cluster mappings, page 5.' },
-            { src: 'variant_network_large_page_06.png', label: 'Page 6', caption: 'Cluster mappings, page 6.' }
+            { src: 'variant_network_large_page_01.png', label: 'Page 1', caption: 'Cluster mappings, slice 1.' },
+            { src: 'variant_network_large_page_02.png', label: 'Page 2', caption: 'Cluster mappings, slice 2.' },
+            { src: 'variant_network_large_page_03.png', label: 'Page 3', caption: 'Cluster mappings, slice 3.' },
+            { src: 'variant_network_large_page_04.png', label: 'Page 4', caption: 'Cluster mappings, slice 4.' },
+            { src: 'variant_network_large_page_05.png', label: 'Page 5', caption: 'Cluster mappings, slice 5.' },
+            { src: 'variant_network_large_page_06.png', label: 'Page 6', caption: 'Cluster mappings, slice 6.' },
+            { src: 'variant_network_large_page_07.png', label: 'Page 7', caption: 'Cluster mappings, slice 7.' },
+            { src: 'variant_network_large_page_08.png', label: 'Page 8', caption: 'Cluster mappings, slice 8.' },
+            { src: 'variant_network_large_page_09.png', label: 'Page 9', caption: 'Cluster mappings, slice 9.' },
+            { src: 'variant_network_large_page_10.png', label: 'Page 10', caption: 'Cluster mappings, slice 10.' }
           ]
         }
       ];
@@ -1435,7 +1529,7 @@
 
       function renderTabs() {
         tabs.innerHTML = characters.map((char, index) => `
-          <button class="char-tab${index === 0 ? ' active' : ''}" type="button" data-key="${char.key}" aria-label="${char.roman} evolution">
+          <button class="char-tab${index === 0 ? ' active' : ''}" type="button" data-key="${char.key}" style="--i:${index}" aria-label="${char.roman} evolution">
             <span>${char.glyph}</span><span>${char.roman}</span>
           </button>
         `).join('');
@@ -1503,8 +1597,9 @@
         activeCharacter = next;
         currentFrame = 1;
         lastGoodFrame = null;
-        tabs.querySelectorAll('.char-tab').forEach(tab => tab.classList.remove('active'));
-        button.classList.add('active');
+        tabs.querySelectorAll('.char-tab').forEach(tab => tab.classList.remove('active', 'just-selected'));
+        button.classList.add('active', 'just-selected');
+        window.setTimeout(() => button.classList.remove('just-selected'), 460);
         updateFrame(1);
       });
       frameSlider.addEventListener('input', event => { stopForUser(); updateFrame(Number(event.target.value)); });
@@ -1523,6 +1618,25 @@
         observer.observe(lab);
       }
       updateFrame(1);
+
+      function initGlyphChoiceGuide() {
+        if (!('IntersectionObserver' in window) || !tabs || !lab) return;
+        let played = false;
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting || played) return;
+            played = true;
+            window.setTimeout(() => {
+              tabs.classList.add('guide-bounce');
+              window.setTimeout(() => tabs.classList.remove('guide-bounce'), 1800);
+            }, 320);
+            observer.disconnect();
+          });
+        }, { threshold: 0.42 });
+        observer.observe(lab);
+      }
+      initGlyphChoiceGuide();
+
 
       function figureTemplate(fig) {
         const classes = ['figure-card', fig.wide ? 'large' : ''].filter(Boolean).join(' ');
@@ -1660,7 +1774,7 @@
           const state = states.get(viewer);
           if (!state || !state.active) return;
           if (!state.paused && viewer.scrollHeight > viewer.clientHeight + 8) {
-            viewer.scrollTop += 0.32 * state.direction;
+            viewer.scrollTop += 0.95 * state.direction;
             if (viewer.scrollTop + viewer.clientHeight >= viewer.scrollHeight - 4) state.direction = -1;
             if (viewer.scrollTop <= 4) state.direction = 1;
           }
