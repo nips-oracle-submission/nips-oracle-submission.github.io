@@ -25,8 +25,8 @@
       --paper-3: #f1e0ca;
       --bronze: #9b4f18;
       --bronze-2: #d8a36b;
-      --line: rgba(155, 79, 24, 0.20);
-      --shadow: 0 20px 64px rgba(45, 22, 13, 0.12);
+      --line: rgba(155, 79, 24, 0.18);
+      --shadow: 0 18px 56px rgba(45, 22, 13, 0.11);
       --radius: 24px;
       --max: 1160px;
     }
@@ -41,7 +41,7 @@
         radial-gradient(circle at 6% 5%, rgba(216,163,107,0.18), transparent 26%),
         radial-gradient(circle at 94% 18%, rgba(155,79,24,0.10), transparent 32%),
         linear-gradient(135deg, #fbf7ee 0%, #e7d7c7 100%);
-      line-height: 1.68;
+      line-height: 1.66;
       overflow-x: hidden;
     }
 
@@ -72,20 +72,21 @@
     a { color: inherit; }
     img { max-width: 100%; display: block; }
     button { font-family: inherit; }
+
     .page { width: min(var(--max), calc(100vw - 48px)); margin: 0 auto; }
 
     .nav {
       position: sticky;
       top: 0;
       z-index: 80;
-      background: rgba(251, 247, 238, 0.84);
+      background: rgba(251, 247, 238, 0.88);
       border-bottom: 1px solid rgba(155,79,24,0.12);
       backdrop-filter: blur(18px);
     }
     .nav-inner {
       width: min(var(--max), calc(100vw - 48px));
       margin: 0 auto;
-      min-height: 62px;
+      min-height: 60px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -98,7 +99,7 @@
       text-decoration: none;
       color: var(--bronze);
       font-family: 'IBM Plex Mono', monospace;
-      font-size: .88rem;
+      font-size: .86rem;
       letter-spacing: .06em;
       font-weight: 800;
       white-space: nowrap;
@@ -114,10 +115,10 @@
       font-family: 'Noto Serif SC', serif;
       letter-spacing: 0;
     }
-    .nav-links { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 16px; }
+    .nav-links { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 15px; }
     .nav-links a {
       font-family: 'Noto Sans SC', sans-serif;
-      font-size: .84rem;
+      font-size: .83rem;
       color: var(--ink-2);
       text-decoration: none;
       border-bottom: 1px solid transparent;
@@ -125,8 +126,8 @@
     .nav-links a:hover { color: var(--bronze); border-color: var(--bronze-2); }
 
     .hero {
-      margin: 30px auto 42px;
-      padding: clamp(34px, 5.5vw, 68px);
+      margin: 28px auto 38px;
+      padding: clamp(34px, 5vw, 62px);
       border-radius: 28px;
       overflow: hidden;
       position: relative;
@@ -148,7 +149,7 @@
       font-weight: 800;
       pointer-events: none;
     }
-    .hero-content { position: relative; z-index: 1; max-width: 860px; text-align: left; }
+    .hero-content { position: relative; z-index: 1; max-width: 850px; text-align: left; }
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -158,7 +159,7 @@
       border-radius: 999px;
       padding: 8px 14px;
       font-family: 'IBM Plex Mono', monospace;
-      font-size: .75rem;
+      font-size: .73rem;
       letter-spacing: .08em;
       text-transform: uppercase;
       background: rgba(255,255,255,0.06);
@@ -167,27 +168,27 @@
       margin: 22px 0 0;
       font-family: 'Instrument Serif', 'Noto Serif SC', serif;
       font-weight: 400;
-      font-size: clamp(1.72rem, 3.15vw, 3.12rem);
+      font-size: clamp(1.68rem, 3vw, 3rem);
       line-height: 1.08;
       letter-spacing: -0.016em;
-      max-width: 820px;
+      max-width: 800px;
     }
     .hero-subtitle {
       margin: 18px 0 0;
-      max-width: 730px;
+      max-width: 720px;
       color: rgba(255,247,233,0.88);
-      font-size: clamp(1rem, 1.28vw, 1.12rem);
+      font-size: clamp(1rem, 1.25vw, 1.1rem);
     }
     .meta-line {
-      margin-top: 26px;
+      margin-top: 24px;
       display: flex;
       gap: 18px;
       flex-wrap: wrap;
       color: rgba(255,247,233,0.78);
       font-family: 'Noto Sans SC', sans-serif;
-      font-size: .93rem;
+      font-size: .92rem;
     }
-    .link-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; justify-content: flex-start; }
+    .link-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; justify-content: flex-start; }
     .pill-link, .btn {
       display: inline-flex;
       align-items: center;
@@ -209,9 +210,9 @@
     .btn.small { padding: 8px 12px; font-size: .84rem; }
 
     .section {
-      margin: 34px 0;
-      padding: clamp(28px, 4vw, 46px);
-      background: rgba(255, 253, 248, 0.88);
+      margin: 30px 0;
+      padding: clamp(26px, 3.7vw, 42px);
+      background: rgba(255, 253, 248, 0.90);
       border: 1px solid rgba(155,79,24,0.10);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -219,144 +220,113 @@
     }
     .section-header {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(240px, 360px);
-      gap: 28px;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 12px;
       align-items: end;
-      margin-bottom: 24px;
-      padding-bottom: 18px;
       border-bottom: 2px solid rgba(216,163,107,0.72);
+      padding-bottom: 17px;
+      margin-bottom: 22px;
     }
     .section-kicker {
-      margin-bottom: 9px;
       font-family: 'IBM Plex Mono', monospace;
-      font-size: .76rem;
       color: var(--bronze);
-      letter-spacing: .12em;
       text-transform: uppercase;
-      font-weight: 800;
+      letter-spacing: .16em;
+      font-size: .77rem;
+      font-weight: 900;
+      margin-bottom: 7px;
     }
     h2.section-title {
       margin: 0;
       font-family: 'Instrument Serif', 'Noto Serif SC', serif;
       font-weight: 400;
-      font-size: clamp(1.55rem, 2.35vw, 2.18rem);
-      line-height: 1.14;
-      letter-spacing: -0.01em;
+      font-size: clamp(1.62rem, 2.65vw, 2.34rem);
+      line-height: 1.12;
+      max-width: 920px;
     }
-    .section-lede { margin: 0; color: var(--muted); font-size: .98rem; }
-    .text-flow { max-width: 900px; color: var(--ink-2); }
-    .text-flow p { margin-top: 0; }
-    .story-list {
-      margin: 20px 0 0;
-      padding: 0;
-      list-style: none;
-      display: grid;
-      gap: 12px;
-      max-width: 900px;
+    .section-lede {
+      margin: 0;
+      max-width: 840px;
+      color: var(--muted);
+      font-size: clamp(.98rem, 1.16vw, 1.06rem);
     }
-    .story-list li {
-      display: grid;
-      grid-template-columns: 42px minmax(0, 1fr);
-      gap: 14px;
-      align-items: start;
-    }
-    .story-list .num {
+
+    .text-flow { max-width: 980px; }
+    .text-flow p { margin: 0 0 16px; color: var(--ink-2); font-size: clamp(1rem, 1.28vw, 1.13rem); }
+    .story-list { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 14px; }
+    .story-list li { display: grid; grid-template-columns: 54px minmax(0,1fr); gap: 16px; align-items: start; }
+    .num {
       font-family: 'IBM Plex Mono', monospace;
       color: var(--bronze);
-      font-size: .78rem;
-      font-weight: 800;
-      padding-top: 3px;
-    }
-    .story-list strong { color: var(--ink); }
-
-    .quote-note {
-      margin: 22px 0 0;
-      padding: 18px 20px;
-      border-left: 4px solid var(--bronze-2);
-      border-radius: 14px;
-      background: rgba(251,244,232,0.78);
-      color: var(--ink-2);
+      font-weight: 900;
+      font-size: .82rem;
+      letter-spacing: .06em;
     }
 
-    .stat-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
-    .stat-box {
-      min-width: 112px;
-      flex: 1;
-      border: 1px solid rgba(155,79,24,0.18);
-      border-radius: 16px;
-      padding: 14px;
-      background: linear-gradient(135deg, #fffaf2, #f4e7d5);
-    }
-    .stat-value { font-size: 1.48rem; font-weight: 900; color: var(--bronze); line-height: 1; }
-    .stat-label { margin-top: 6px; color: var(--muted); font-family: 'Noto Sans SC', sans-serif; font-size: .84rem; line-height: 1.35; }
-
-    /* Evolution lab */
-    .lab-panel {
-      background:
-        linear-gradient(rgba(155,79,24,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(155,79,24,0.03) 1px, transparent 1px),
-        rgba(255,250,242,0.78);
-      background-size: 23px 23px;
-      border: 1px solid var(--line);
+    /* Interactive evolution */
+    .lab-card {
+      border: 1px solid rgba(155,79,24,0.15);
       border-radius: 22px;
-      padding: 26px;
+      background:
+        linear-gradient(rgba(255,250,242,0.88), rgba(255,250,242,0.88)),
+        linear-gradient(rgba(155,79,24,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(155,79,24,0.03) 1px, transparent 1px);
+      background-size: auto, 24px 24px, 24px 24px;
+      padding: 24px;
     }
-    .character-tabs { display: flex; flex-wrap: wrap; gap: 12px; margin: 4px 0 24px; }
+    .char-tabs { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 22px; }
     .char-tab {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
+      width: 72px;
+      height: 72px;
+      border-radius: 999px;
       border: 1px solid rgba(155,79,24,0.22);
-      background: #fffaf2;
+      background: rgba(255,250,242,0.78);
       color: var(--bronze);
+      font-weight: 900;
       cursor: pointer;
-      display: grid;
-      place-items: center;
-      transition: transform .18s ease, background .18s ease, color .18s ease;
+      transition: transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
     }
     .char-tab span:first-child { display: block; font-weight: 900; font-size: 1.08rem; line-height: 1; }
     .char-tab span:last-child { display: block; font-family: 'IBM Plex Mono', monospace; font-size: .64rem; margin-top: 4px; }
     .char-tab.active { background: var(--ink); color: #fff7e9; border-color: var(--ink); transform: translateY(-2px); }
-    .evolution-grid { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 24px; align-items: stretch; }
+
+    .evolution-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(280px, .86fr);
+      gap: 24px;
+      align-items: stretch;
+    }
     .frame-stage {
       min-height: 420px;
-      background: radial-gradient(circle at center, rgba(216,163,107,0.18), transparent 60%), #fbf4e8;
-      border: 1px solid rgba(155,79,24,0.18);
+      border: 1px solid rgba(155,79,24,0.15);
       border-radius: 18px;
+      background:
+        radial-gradient(circle at center, rgba(216,163,107,0.12), transparent 58%),
+        #f8efe4;
       display: grid;
       place-items: center;
       overflow: hidden;
-      position: relative;
-      padding: 18px;
+      padding: 24px;
     }
     .frame-stage img {
       width: 100%;
-      height: 100%;
       max-height: 560px;
       object-fit: contain;
-      border-radius: 12px;
-      background: transparent;
-      opacity: 0;
-      transition: opacity .28s ease;
+      border-radius: 4px;
+      background: #fff;
     }
-    .frame-stage.ready img { opacity: 1; }
-    .frame-placeholder {
-      position: absolute;
-      left: 22px;
-      right: 22px;
-      bottom: 22px;
-      border-radius: 14px;
-      padding: 16px 18px;
-      color: #fff7e9;
-      background: rgba(45,22,13,0.88);
-      display: none;
-      font-size: .92rem;
+    .frame-stage:not(.ready)::before {
+      content: 'Select a character to preview its generated evolution sequence.';
+      color: var(--muted);
+      text-align: center;
+      max-width: 360px;
     }
-    .frame-stage.missing { min-height: 240px; }
-    .frame-stage.missing .frame-placeholder { display: block; }
-    .side-card {
-      background: linear-gradient(135deg, #fff7ea, #f2e3cc);
-      border: 1px solid rgba(155,79,24,0.20);
+    .frame-stage:not(.ready) img { display: none; }
+    .frame-stage.missing::before { content: 'Evolution frames are not available for this character yet.'; }
+
+    .side-panel {
+      border: 1px solid rgba(155,79,24,0.16);
+      background: linear-gradient(135deg, #fff4e3, #f4e2c6);
       border-radius: 18px;
       padding: 24px;
       display: flex;
@@ -383,83 +353,56 @@
     .control-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
     .auto-note { margin: 14px 0 0; color: var(--muted); font-size: .88rem; line-height: 1.45; }
 
-    /* Figures */
+    /* Compact dataset/method layouts */
     .figure-grid { display: grid; gap: 18px; margin-top: 18px; }
     .figure-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .figure-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .figure-grid.auto { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-    .figure-card {
+
+    .stat-row { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; }
+    .stat-box { border: 1px solid rgba(155,79,24,0.15); border-radius: 14px; padding: 14px 12px; background: #fffaf2; text-align: center; }
+    .stat-value { font-family: 'Instrument Serif', serif; font-size: 1.8rem; line-height: 1; color: var(--bronze); }
+    .stat-label { font-family: 'Noto Sans SC', sans-serif; font-size: .78rem; color: var(--muted); margin-top: 6px; }
+
+    .method-rail {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+      border: 1px solid rgba(155,79,24,0.14);
+      border-radius: 18px;
+      overflow: hidden;
+      margin-top: 18px;
+      background: #fffaf2;
+    }
+    .method-item {
+      padding: 18px;
+      border-right: 1px solid rgba(155,79,24,0.14);
+      min-height: 176px;
+    }
+    .method-item:last-child { border-right: 0; }
+    .method-item h3 { margin: 8px 0 8px; font-size: 1.05rem; }
+    .method-item p { margin: 0; color: var(--muted); font-size: .93rem; }
+
+    /* Figures */
+    .chapter {
+      margin-top: 22px;
+      padding: 18px;
       border: 1px solid rgba(155,79,24,0.16);
       border-radius: 18px;
-      background: rgba(255,250,242,0.74);
-      overflow: hidden;
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
+      background: rgba(255,250,242,0.78);
     }
-    .figure-card.large { grid-column: 1 / -1; }
-    .figure-card.hidden { display: none; }
-    .figure-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 12px 15px;
-      background: var(--ink);
-      color: #fff7e9;
-    }
-    .figure-no {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: .70rem;
-      color: #f2c998;
-      letter-spacing: .08em;
-      white-space: nowrap;
-    }
-    .figure-title {
-      font-family: 'Noto Sans SC', sans-serif;
-      font-weight: 900;
-      font-size: .9rem;
-      text-align: right;
-      line-height: 1.25;
-    }
-    .figure-media {
-      background: #fff;
-      border-bottom: 1px solid rgba(155,79,24,0.12);
-      min-height: 160px;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-    }
-    .figure-media img { width: 100%; height: auto; object-fit: contain; background: #fff; }
-    .figure-card.compact .figure-media { max-height: 300px; }
-    .figure-card.compact .figure-media img { max-height: 300px; object-fit: contain; }
-    .figure-card.wide .figure-media { min-height: 260px; max-height: 520px; }
-    .figure-card.wide .figure-media img { max-height: 520px; object-fit: contain; }
-    .figure-body { padding: 15px 17px 17px; flex: 1; display: flex; flex-direction: column; }
-    .figure-body p { margin: 0; color: var(--ink-2); }
-    .figure-body strong { color: var(--ink); }
-    .figure-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 13px; }
-    .figure-card.is-missing { display: none; }
-
-    .chapter {
-      margin-top: 30px;
-      padding-top: 28px;
-      border-top: 1px solid rgba(155,79,24,0.16);
-    }
-    .chapter:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }
     .chapter-title {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
       gap: 18px;
       align-items: end;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     .chapter-title h3 {
       margin: 0;
-      font-size: clamp(1.18rem, 1.8vw, 1.44rem);
+      font-size: clamp(1.14rem, 1.7vw, 1.36rem);
       line-height: 1.24;
     }
-    .chapter-title span {
+    .chapter-label {
       font-family: 'IBM Plex Mono', monospace;
       color: var(--bronze);
       font-size: .72rem;
@@ -467,46 +410,119 @@
       text-transform: uppercase;
       white-space: nowrap;
     }
-    .chapter-intro { color: var(--muted); max-width: 860px; margin: 0 0 16px; }
+    .chapter-intro { color: var(--muted); max-width: 900px; margin: 0 0 14px; }
 
-    .full-plate {
-      border: 1px solid rgba(155,79,24,0.18);
-      border-radius: 18px;
-      background: rgba(255,250,242,0.76);
+    .chapter.collapsible {
+      max-height: 108px;
       overflow: hidden;
-      margin-top: 24px;
+      position: relative;
+      transition: max-height .42s ease, box-shadow .24s ease;
     }
-    .full-plate.hidden, .full-plate.is-missing { display: none; }
-    .full-plate .plate-copy {
-      padding: 18px 20px;
-      border-bottom: 1px solid rgba(155,79,24,0.14);
+    .chapter.collapsible::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 48px;
+      background: linear-gradient(180deg, rgba(255,250,242,0), rgba(255,250,242,1));
+      pointer-events: none;
+    }
+    .chapter.collapsible:hover,
+    .chapter.collapsible:focus-within,
+    .chapter.collapsible.open {
+      max-height: 1800px;
+      box-shadow: 0 18px 42px rgba(45,22,13,0.10);
+    }
+    .chapter.collapsible:hover::after,
+    .chapter.collapsible:focus-within::after,
+    .chapter.collapsible.open::after { opacity: 0; }
+
+    .figure-card {
+      border: 1px solid rgba(155,79,24,0.14);
+      border-radius: 16px;
+      background: #fffdf8;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .figure-card.is-missing { display: none; }
+    .figure-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 13px;
+      background: var(--ink);
+      color: #fff7e9;
+    }
+    .figure-no { font-family: 'IBM Plex Mono', monospace; color: #f2c998; font-size: .69rem; letter-spacing: .06em; white-space: nowrap; }
+    .figure-title { font-family: 'Noto Sans SC', sans-serif; font-weight: 900; font-size: .86rem; text-align: right; line-height: 1.22; }
+    .figure-media {
+      background: #fff;
+      min-height: 140px;
+      max-height: 260px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(155,79,24,0.10);
+    }
+    .figure-card.large { grid-column: 1 / -1; }
+    .figure-card.large .figure-media { max-height: 520px; }
+    .figure-media img { width: 100%; height: auto; max-height: inherit; object-fit: contain; background: #fff; }
+    .figure-body { padding: 12px 14px 14px; flex: 1; display: flex; flex-direction: column; }
+    .figure-body p { margin: 0; color: var(--ink-2); font-size: .93rem; line-height: 1.55; }
+    .figure-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+
+    .plates-grid { display: grid; gap: 20px; }
+    .plate {
+      border: 1px solid rgba(155,79,24,0.16);
+      border-radius: 18px;
+      background: #fffdf8;
+      overflow: hidden;
+    }
+    .plate.is-missing { display: none; }
+    .plate-copy {
+      padding: 16px 18px;
+      border-bottom: 1px solid rgba(155,79,24,0.12);
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
-      gap: 18px;
+      gap: 16px;
       align-items: center;
     }
-    .full-plate h3 { margin: 0 0 6px; font-size: 1.08rem; line-height: 1.28; }
-    .full-plate p { margin: 0; color: var(--muted); }
-    .plate-media { background: #fff; padding: 14px; }
+    .plate-copy h3 { margin: 0 0 5px; font-size: 1.04rem; line-height: 1.28; }
+    .plate-copy p { margin: 0; color: var(--muted); font-size: .95rem; }
+    .plate-media {
+      background: #fff;
+      padding: 14px;
+      display: grid;
+      place-items: center;
+      max-height: 780px;
+      overflow: auto;
+    }
     .plate-media img {
       width: 100%;
       height: auto;
+      max-height: 720px;
       object-fit: contain;
       border-radius: 10px;
       border: 1px solid rgba(155,79,24,0.10);
       background: #fff;
     }
 
-    .method-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 20px; }
-    .step-card {
-      border: 1px solid rgba(155,79,24,0.16);
-      background: linear-gradient(135deg, #fffaf2, #f8eddc);
-      border-radius: 16px;
-      padding: 16px;
+    .variant-viewer .plate-media { display: block; padding: 0; background: #fff; max-height: none; overflow: visible; }
+    .variant-stack { display: grid; gap: 0; }
+    .variant-stack figure { margin: 0; }
+    .variant-stack figure + figure { border-top: 1px solid rgba(155,79,24,0.10); }
+    .variant-stack img { width: 100%; height: auto; max-height: none; object-fit: contain; border: 0; border-radius: 0; background: #fff; display: block; }
+    .variant-stack .variant-page-label {
+      margin: 0;
+      padding: 8px 14px;
+      color: var(--muted);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .04em;
+      background: #fffdf8;
     }
-    .step-card .num { font-family: 'IBM Plex Mono', monospace; color: var(--bronze); font-weight: 900; font-size: .72rem; }
-    .step-card h4 { margin: 8px 0 6px; line-height: 1.25; }
-    .step-card p { margin: 0; color: var(--muted); font-size: .92rem; }
 
     .results-table-wrap { overflow-x: auto; margin-top: 20px; border: 1px solid rgba(155,79,24,0.15); border-radius: 16px; }
     table { width: 100%; border-collapse: collapse; min-width: 740px; background: #fffaf2; }
@@ -514,15 +530,17 @@
     th { background: var(--ink); color: #fff7e9; font-family: 'Noto Sans SC', sans-serif; font-size: .88rem; }
     td:first-child, th:first-child { text-align: left; }
     tr.highlight-row td { background: #f5e5cd; font-weight: 900; color: var(--ink); }
+
     .citation-box {
       background: #21110b;
       color: #f6dfbf;
       border-radius: 18px;
-      padding: 22px;
+      padding: 20px;
       overflow-x: auto;
       font-family: 'IBM Plex Mono', monospace;
-      font-size: .84rem;
-      white-space: pre-wrap;
+      font-size: .86rem;
+      line-height: 1.6;
+      white-space: pre;
     }
 
     .modal {
@@ -530,105 +548,108 @@
       inset: 0;
       z-index: 200;
       display: none;
-      background: rgba(22, 10, 5, 0.78);
-      padding: 24px;
+      background: rgba(31,17,10,0.74);
+      backdrop-filter: blur(10px);
+      padding: 26px;
     }
     .modal.open { display: grid; place-items: center; }
     .modal-box {
-      width: min(96vw, 1320px);
+      width: min(1180px, 96vw);
       max-height: 92vh;
-      overflow: auto;
       background: #fffaf2;
       border-radius: 20px;
-      border: 1px solid rgba(216,163,107,0.45);
-      box-shadow: 0 28px 80px rgba(0,0,0,0.42);
+      border: 1px solid rgba(216,163,107,0.35);
+      overflow: hidden;
+      box-shadow: 0 28px 90px rgba(0,0,0,0.34);
+      display: flex;
+      flex-direction: column;
     }
     .modal-head {
-      position: sticky;
-      top: 0;
-      z-index: 2;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
+      gap: 18px;
+      padding: 14px 18px;
       background: var(--ink);
       color: #fff7e9;
-      padding: 14px 18px;
     }
     .modal-title { font-weight: 900; }
-    .modal-content { padding: 18px; }
-    .modal-content img { width: 100%; height: auto; background: white; border-radius: 12px; }
-    .modal-caption { margin-top: 12px; color: var(--muted); }
+    .modal-content { padding: 18px; overflow: auto; }
+    .modal-content img { margin: 0 auto; max-width: none; width: auto; max-height: none; }
+    .modal-caption { color: var(--muted); margin: 12px 0 0; }
 
-    @media (max-width: 980px) {
-      .section-header, .evolution-grid { grid-template-columns: 1fr; }
-      .method-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .figure-grid.two, .figure-grid.three { grid-template-columns: 1fr; }
+    @media (max-width: 900px) {
+      .page, .nav-inner { width: min(var(--max), calc(100vw - 28px)); }
+      .nav-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .evolution-grid, .figure-grid.two, .figure-grid.three, .method-rail { grid-template-columns: 1fr; }
+      .method-item { border-right: 0; border-bottom: 1px solid rgba(155,79,24,0.14); }
+      .method-item:last-child { border-bottom: 0; }
       .frame-stage { min-height: 340px; }
-      .nav-inner { height: auto; padding: 12px 0; align-items: flex-start; flex-direction: column; }
-      .nav-links { justify-content: flex-start; }
+      .section-header { grid-template-columns: 1fr; }
+      .stat-row { grid-template-columns: 1fr; }
+      .plate-copy, .chapter-title { grid-template-columns: 1fr; }
     }
-    @media (max-width: 640px) {
-      .page, .nav-inner { width: min(var(--max), calc(100vw - 26px)); }
+    @media (max-width: 560px) {
+      .page, .nav-inner { width: min(var(--max), calc(100vw - 18px)); }
       .hero, .section { border-radius: 18px; }
-      .character-tabs { gap: 8px; }
+      .lab-card { padding: 14px; }
       .char-tab { width: 58px; height: 58px; }
-      .method-steps { grid-template-columns: 1fr; }
-      .full-plate .plate-copy, .chapter-title { grid-template-columns: 1fr; }
-      .story-list li { grid-template-columns: 34px minmax(0, 1fr); }
+      .frame-stage { min-height: 280px; padding: 12px; }
     }
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; animation: none !important; }
     }
   </style>
 </head>
+
 <body>
-  <nav class="nav" aria-label="Project navigation">
+  <nav class="nav" aria-label="Main navigation">
     <div class="nav-inner">
       <a class="brand" href="#top"><span class="brand-mark">甲</span><span>MSEF · Oracle</span></a>
       <div class="nav-links">
-        <a href="#story">Story</a>
-        <a href="#evolution">Evolution</a>
-        <a href="#dataset">Dataset</a>
-        <a href="#method">Method</a>
-        <a href="#figures">Evidence</a>
-        <a href="#plates">Visual Plates</a>
-        <a href="#results">Results</a>
+        <a href="#story">1 Story</a>
+        <a href="#evolution">2 Evolution</a>
+        <a href="#dataset">3 Dataset</a>
+        <a href="#method">4 Method</a>
+        <a href="#evidence">5 Evidence</a>
+        <a href="#plates">6 Plates</a>
+        <a href="#results">7 Results</a>
       </div>
     </div>
   </nav>
 
-  <main id="top" class="page">
-    <header class="hero">
-      <div class="hero-content">
-        <div class="eyebrow"><i class="fa-solid fa-scroll"></i> NeurIPS 2026 submission · Interactive project page</div>
-        <h1 class="hero-title">A Unified Manifold Framework for Modeling Chinese Script Evolution with Application to Oracle Bone Decipherment</h1>
-        <p class="hero-subtitle">MSEF treats Chinese script evolution as a continuous path through historical manifolds, then uses survival-aware bidirectional verification to decipher Oracle Bone characters.</p>
-        <div class="meta-line"><span>Anonymous Authors</span><span>Anonymous Institution</span></div>
-        <div class="link-row">
-          <a class="pill-link" href="#" aria-label="Paper link"><i class="fa-solid fa-file-lines"></i> Paper</a>
-          <a class="pill-link" href="https://github.com/nips-oracle-submission/nips-oracle-submission" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Code</a>
-          <a class="pill-link" href="https://github.com/nips-oracle-submission/nips-oracle-submission/blob/main/data_mini.zip" target="_blank" rel="noopener"><i class="fa-solid fa-database"></i> Dataset</a>
-        </div>
+  <header id="top" class="hero page">
+    <div class="hero-content">
+      <div class="eyebrow"><i class="fa-solid fa-scroll"></i> NeurIPS 2026 submission · Interactive project page</div>
+      <h1 class="hero-title">A Unified Manifold Framework for Modeling Chinese Script Evolution with Application to Oracle Bone Decipherment</h1>
+      <p class="hero-subtitle">MSEF models a 3,000-year script history as continuous movement through era-specific manifolds, then verifies decipherment candidates with survival-aware bidirectional inference.</p>
+      <div class="meta-line"><span>Anonymous Authors</span><span>Anonymous Institution</span></div>
+      <div class="link-row">
+        <a class="pill-link" href="#" aria-label="Paper link"><i class="fa-solid fa-file-lines"></i> Paper</a>
+        <a class="pill-link" href="https://github.com/nips-oracle-submission/nips-oracle-submission" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Code</a>
+        <a class="pill-link" href="https://github.com/nips-oracle-submission/nips-oracle-submission/blob/main/data_mini.zip" target="_blank" rel="noopener"><i class="fa-solid fa-database"></i> Dataset</a>
       </div>
-    </header>
+    </div>
+  </header>
 
+  <main class="page">
     <section id="story" class="section">
       <div class="section-header">
         <div>
           <div class="section-kicker">Core narrative</div>
-          <h2 class="section-title">From Fragmented Glyphs to a Continuous Evolution Model</h2>
+          <h2 class="section-title">1. From Fragmented Glyphs to a Continuous Evolution Model</h2>
         </div>
-        <p class="section-lede">The page now follows the same logic as the manuscript: problem, data, model, inference, and evidence. Each section has one job.</p>
+        <p class="section-lede">One page, one argument: problem → data → model → inference → evidence.</p>
       </div>
       <div class="text-flow">
-        <p>Oracle Bone decipherment is not just a visual matching problem. A glyph may look very different across Bronze, Seal, Clerical, and modern scripts while still belonging to one historical trajectory. The central idea of MSEF is to model that trajectory directly instead of comparing isolated snapshots.</p>
+        <p>Oracle Bone decipherment is not just visual matching. A glyph may change sharply across Bronze, Seal, Clerical, and modern scripts while still belonging to one historical trajectory. MSEF models that trajectory directly instead of comparing isolated snapshots.</p>
         <ol class="story-list">
-          <li><span class="num">01</span><span><strong>Why direct matching fails.</strong> Intermediate dynasties can introduce sharp visual shifts, so nearest-neighbor similarity against one later period is often misleading.</span></li>
-          <li><span class="num">02</span><span><strong>Why the dataset matters.</strong> Complete five-era chains are scarce, but partial cross-era correspondences are abundant and can supervise continuous dynamics.</span></li>
-          <li><span class="num">03</span><span><strong>What MSEF learns.</strong> Each character is represented as an era-specific manifold point, and Neural ODEs learn how points move between eras.</span></li>
-          <li><span class="num">04</span><span><strong>How inference works.</strong> CBED recalls candidates forward, removes unlikely or extinct paths, and checks final candidates by tracing them backward.</span></li>
-          <li><span class="num">05</span><span><strong>Why the result is inspectable.</strong> Post-analysis examines attention, saliency, topology, and variant networks to test whether the model learned real paleographic structure.</span></li>
+          <li><span class="num">01</span><span><strong>Why direct matching fails.</strong> Intermediate dynasties can introduce non-monotonic visual shifts.</span></li>
+          <li><span class="num">02</span><span><strong>Why the dataset matters.</strong> Complete five-era chains are scarce, but partial cross-era correspondences are abundant.</span></li>
+          <li><span class="num">03</span><span><strong>What MSEF learns.</strong> Each glyph becomes an era-specific manifold point, and Neural ODEs learn how points move between eras.</span></li>
+          <li><span class="num">04</span><span><strong>How inference works.</strong> CBED recalls candidates forward, removes unlikely or extinct paths, and checks candidates by tracing them backward.</span></li>
+          <li><span class="num">05</span><span><strong>Why the result is inspectable.</strong> Post-analysis tests whether the model learned paleographic structure rather than shallow pixel similarity.</span></li>
         </ol>
       </div>
     </section>
@@ -637,22 +658,22 @@
       <div class="section-header">
         <div>
           <div class="section-kicker">Interactive component</div>
-          <h2 class="section-title">Scrubbing Through Generated Script Evolution</h2>
+          <h2 class="section-title">2. Scrubbing Through Generated Script Evolution</h2>
         </div>
-        <p class="section-lede">Choose a character and move along its generated trajectory. The point is not a single attractive animation, but a reusable temporal view of glyph evolution.</p>
+        <p class="section-lede">Select a character and move through its generated trajectory. The playback is intentionally slightly paced so readers can see structural changes.</p>
       </div>
-      <div class="lab-panel" id="evolutionLab">
-        <div class="character-tabs" id="characterTabs" aria-label="Choose a character for the evolution animation"></div>
+
+      <div class="lab-card" id="evolutionLab">
+        <div class="char-tabs" id="characterTabs" aria-label="Character selector"></div>
         <div class="evolution-grid">
           <div class="frame-stage" id="frameStage">
-            <img id="frameImage" alt="Script evolution animation frame" />
-            <div class="frame-placeholder" id="framePlaceholder">The animation sequence is unavailable in this preview. On the live page, this panel plays the selected character’s generated evolution path.</div>
+            <img id="frameImage" alt="Continuous script evolution frame" />
           </div>
-          <aside class="side-card">
+          <aside class="side-panel">
             <div>
               <div class="phase-pill" id="phasePill"><i class="fa-solid fa-scroll"></i> Phase</div>
-              <h3 class="stage-title" id="stageTitle">Continuous evolution path</h3>
-              <p class="stage-copy" id="stageCopy">Select a character and scrub through its generated path.</p>
+              <h3 class="stage-title" id="stageTitle">The glyph begins as an ancient visual structure.</h3>
+              <p class="stage-copy" id="stageCopy">Early forms often preserve pictographic or semantic anchors.</p>
             </div>
             <div>
               <div class="frame-meta"><span id="frameLabel">Frame 0001 / 0240</span><span id="characterLabel">Gong</span></div>
@@ -663,7 +684,7 @@
                 <button class="btn light" id="nextButton" type="button">Next <i class="fa-solid fa-forward-step"></i></button>
                 <button class="btn light" id="restartButton" type="button"><i class="fa-solid fa-rotate-right"></i> Restart</button>
               </div>
-              <p class="auto-note">Auto-preview starts when the panel enters the viewport. Reader interaction pauses it, so manual exploration always has priority.</p>
+              <p class="auto-note">Auto-preview starts when this panel enters the viewport. Reader interaction pauses it.</p>
             </div>
           </aside>
         </div>
@@ -674,17 +695,17 @@
       <div class="section-header">
         <div>
           <div class="section-kicker">Dataset</div>
-          <h2 class="section-title">Fine-Grained Cross-Era Supervision</h2>
+          <h2 class="section-title">3. Fine-Grained Cross-Era Supervision</h2>
         </div>
-        <p class="section-lede">The dataset is not a side product. It is what lets MSEF learn from incomplete historical chains rather than requiring every character to survive through all eras.</p>
+        <p class="section-lede">The dataset is what lets MSEF learn from incomplete historical chains rather than requiring every character to survive through all eras.</p>
       </div>
       <div class="figure-grid two">
         <div class="text-flow">
-          <p>The dataset preserves era, subperiod, regional, visual, structural, semantic, contextual, and spatiotemporal signals. This lets the model use many partial correspondences rather than only the small number of complete OBI-to-modern chains.</p>
+          <p>The dataset preserves era, subperiod, regional, visual, structural, semantic, contextual, and spatiotemporal signals. This allows partial correspondences to become supervision for continuous dynamics.</p>
           <ol class="story-list">
             <li><span class="num">01</span><span><strong>Cross-era coverage.</strong> Characters are linked across OBI, Bronze, Seal, Clerical, and Regular scripts when evidence is available.</span></li>
-            <li><span class="num">02</span><span><strong>Fine-grained time.</strong> OBI groups and Bronze subperiods preserve within-era variation instead of collapsing all history into coarse labels.</span></li>
-            <li><span class="num">03</span><span><strong>Partial chains as signal.</strong> Non-complete pairs become useful training evidence under a continuous manifold formulation.</span></li>
+            <li><span class="num">02</span><span><strong>Fine-grained time.</strong> OBI groups and Bronze subperiods preserve within-era variation.</span></li>
+            <li><span class="num">03</span><span><strong>Partial chains as signal.</strong> Non-complete pairs become usable under continuous manifold learning.</span></li>
           </ol>
         </div>
         <div>
@@ -706,45 +727,49 @@
       <div class="section-header">
         <div>
           <div class="section-kicker">Method</div>
-          <h2 class="section-title">Pre-Diagnosis → MSEF → CBED → Post-Analysis</h2>
+          <h2 class="section-title">4. Pre-Diagnosis → MSEF → CBED → Post-Analysis</h2>
         </div>
-        <p class="section-lede">The method is presented as a pipeline: diagnose the failure mode, learn continuous dynamics, verify candidates bidirectionally, then inspect the learned mechanisms.</p>
+        <p class="section-lede">A compact four-stage method map. The detailed figures are organized in the next section.</p>
       </div>
 
-      <div class="method-steps">
-        <div class="step-card"><span class="num">01</span><h4>Pre-diagnosis</h4><p>Identify why direct generation, retrieval, and rule enumeration break under missing intermediate evidence.</p></div>
-        <div class="step-card"><span class="num">02</span><h4>Continuous manifold</h4><p>Represent each glyph as an era-conditioned point and learn inter-era movement with Neural ODEs.</p></div>
-        <div class="step-card"><span class="num">03</span><h4>CBED inference</h4><p>Recall candidates forward, prune implausible or extinct paths, and verify cycle consistency backward.</p></div>
-        <div class="step-card"><span class="num">04</span><h4>Post-analysis</h4><p>Use mechanistic visualizations to test whether the model learns paleographic structure.</p></div>
+      <div class="method-rail">
+        <div class="method-item"><span class="num">01</span><h3>Pre-diagnosis</h3><p>Identify why direct generation, retrieval, and rule enumeration break under missing intermediate evidence.</p></div>
+        <div class="method-item"><span class="num">02</span><h3>MSEF</h3><p>Represent each glyph as an era-conditioned point and learn inter-era movement with Neural ODEs.</p></div>
+        <div class="method-item"><span class="num">03</span><h3>CBED</h3><p>Recall candidates forward, prune implausible paths, and verify cycle consistency backward.</p></div>
+        <div class="method-item"><span class="num">04</span><h3>Post-analysis</h3><p>Inspect attention, saliency, topology, and variant networks to test learned structure.</p></div>
       </div>
-
-      <div class="figure-grid two" id="methodFigures"></div>
     </section>
 
-    <section id="figures" class="section">
+    <section id="evidence" class="section">
       <div class="section-header">
         <div>
           <div class="section-kicker">Evidence</div>
-          <h2 class="section-title">Manuscript Figures, Organized by Argument</h2>
+          <h2 class="section-title">5. Manuscript Figures as a Four-Part Argument</h2>
         </div>
-        <p class="section-lede">These figures are not a decorative gallery. Each group answers one question a reader is likely to ask while reading the paper.</p>
+        <p class="section-lede">Pre and Post stay folded by default, while the central model and inference chapters remain open for immediate reading.</p>
       </div>
 
-      <div class="chapter">
-        <div class="chapter-title"><h3>1. Why is this method necessary?</h3><span>Pre-exploratory diagnosis</span></div>
-        <p class="chapter-intro">The pre-analysis figures show why the method is derived from the structure of the problem: characters preserve latent identity while their visible forms branch, simplify, and reorganize across time.</p>
+      <div class="chapter collapsible" tabindex="0">
+        <div class="chapter-title"><h3>1. Pre-Exploratory Diagnosis</h3><span class="chapter-label">Hover to expand</span></div>
+        <p class="chapter-intro">Why a continuous model is needed: missing stages, branching variants, and rule explosion make isolated matching brittle.</p>
         <div class="figure-grid three" id="preFigures"></div>
       </div>
 
       <div class="chapter">
-        <div class="chapter-title"><h3>2. How does inference avoid false matches?</h3><span>CBED inference</span></div>
-        <p class="chapter-intro">The inference figures explain how forward recall alone can be too permissive, and why survival-aware pruning plus backward verification is needed.</p>
-        <div class="figure-grid two" id="cbedFigures"></div>
+        <div class="chapter-title"><h3>2. MSEF: Continuous Manifold Formulation</h3><span class="chapter-label">Core model</span></div>
+        <p class="chapter-intro">The main framework, ODE dynamics, and architecture explain how glyphs move through era-specific manifolds.</p>
+        <div class="figure-grid two" id="msefFigures"></div>
       </div>
 
       <div class="chapter">
-        <div class="chapter-title"><h3>3. What does the model learn internally?</h3><span>Mechanistic post-analysis</span></div>
-        <p class="chapter-intro">The post-analysis figures make the learned representation inspectable through attention, saliency, topology, causal intervention, and vector arithmetic.</p>
+        <div class="chapter-title"><h3>3. CBED: Bidirectional Decipherment</h3><span class="chapter-label">Inference</span></div>
+        <p class="chapter-intro">Forward recall finds candidates; survival-aware pruning and backward verification remove historically inconsistent matches.</p>
+        <div class="figure-grid two" id="cbedFigures"></div>
+      </div>
+
+      <div class="chapter collapsible" tabindex="0">
+        <div class="chapter-title"><h3>4. Post-Analysis: What the Model Learns</h3><span class="chapter-label">Hover to expand</span></div>
+        <p class="chapter-intro">Mechanistic visualizations test whether the model learns paleographic structure rather than memorizing visual templates.</p>
         <div class="figure-grid three" id="postFigures"></div>
       </div>
     </section>
@@ -752,19 +777,19 @@
     <section id="plates" class="section">
       <div class="section-header">
         <div>
-          <div class="section-kicker">Full-scale visual plates</div>
-          <h2 class="section-title">Large Figures Shown Without Cropping</h2>
+          <div class="section-kicker">Visual plates</div>
+          <h2 class="section-title">6. Dense Figures Displayed Without Cropping</h2>
         </div>
-        <p class="section-lede">These four dense figures are displayed as standalone plates because shrinking them into a small card makes them unreadable.</p>
+        <p class="section-lede">These figures are too dense for small cards. They are shown as separate plates, with the global variant network split into six readable pages.</p>
       </div>
-      <div id="fullPlates"></div>
+      <div class="plates-grid" id="platesGrid"></div>
     </section>
 
     <section id="results" class="section">
       <div class="section-header">
         <div>
           <div class="section-kicker">Results</div>
-          <h2 class="section-title">Quantitative Evidence</h2>
+          <h2 class="section-title">7. Quantitative Evidence</h2>
         </div>
         <p class="section-lede">The visual story is backed by benchmark performance across commonly used oracle decipherment datasets and the proposed cross-era dataset.</p>
       </div>
@@ -778,7 +803,7 @@
             <tr><td>Generative Baseline</td><td>58.4</td><td>50.6</td><td>47.9</td><td>52.3</td></tr>
             <tr><td>CrossFont / Multi-era Retrieval</td><td>62.1</td><td>57.3</td><td>54.8</td><td>58.1</td></tr>
             <tr><td>OracleAgent</td><td>66.9</td><td>64.2</td><td>61.3</td><td>64.1</td></tr>
-            <tr class="highlight-row"><td>MSEF + CBED</td><td>75.4</td><td>72.5</td><td>69.8</td><td>72.6</td></tr>
+            <tr class="highlight-row"><td>MSEF + CBED</td><td>74.8</td><td>72.5</td><td>70.1</td><td>72.5</td></tr>
           </tbody>
         </table>
       </div>
@@ -790,14 +815,13 @@
           <div class="section-kicker">Citation</div>
           <h2 class="section-title">BibTeX</h2>
         </div>
-        <p class="section-lede">Citation information will be updated after review.</p>
       </div>
-      <div class="citation-box">@inproceedings{anonymous2026msef,
-  title={A Unified Manifold Framework for Modeling Chinese Script Evolution with Application to Oracle Bone Decipherment},
-  author={Anonymous Authors},
-  booktitle={NeurIPS},
-  year={2026}
-}</div>
+      <pre class="citation-box">@inproceedings{anonymous2026msef,
+  title     = {A Unified Manifold Framework for Modeling Chinese Script Evolution with Application to Oracle Bone Decipherment},
+  author    = {Anonymous Authors},
+  booktitle = {Submitted to NeurIPS},
+  year      = {2026}
+}</pre>
     </section>
   </main>
 
@@ -820,8 +844,8 @@
 
       const IMAGE_ROOT = './img/';
       const FRAME_TOTAL = 240;
-      const FRAME_INTERVAL_MS = 260;
-      const PRELOAD_AHEAD = 18;
+      const FRAME_INTERVAL_MS = 200;
+      const PRELOAD_AHEAD = 20;
 
       const characters = [
         { key: 'gong', glyph: '宫', roman: 'Gong', paths: ['gong_evolution/evolution_frames', '宫/evolution_frames', 'gong_evolution'] },
@@ -841,47 +865,59 @@
       ];
 
       const datasetFigures = [
-        { no: 'Data 01', src: 'Bar.png', title: 'Coverage Statistics', body: 'The chart summarizes why complete chains are scarce but partial pairwise evidence is abundant.' },
-        { no: 'Data 02', src: 'contextual_features.png', title: 'Feature Construction', body: 'Shows how visual, structural, semantic, contextual, and spatiotemporal signals enter the dataset.' }
+        { no: 'Data 01', src: 'Bar.png', title: 'Coverage Statistics', body: 'Complete chains are scarce, while partial pairwise evidence is abundant.' },
+        { no: 'Data 02', src: 'contextual_features.png', title: 'Feature Construction', body: 'Visual, structural, semantic, contextual, and spatiotemporal signals are combined as input evidence.' }
       ];
 
-      const methodFigures = [
-        { no: 'Method 01', src: 'fig_framework_overview.png', title: 'MSEF Framework Overview', body: 'This is the main framework figure: continuous manifold evolution above, cascaded bidirectional decipherment below.', wide: true },
-        { no: 'Method 02', src: 'neural_ode_diagram.png', title: 'Neural ODE Transition Dynamics', body: 'Explains the continuous flow operator that moves character representations between historical manifolds.' },
-        { no: 'Method 03', src: 'MSEF_Architecture_Diagram.png', title: 'Model Architecture', body: 'Connects feature extraction, manifold encoding, velocity fields, survival prediction, and verification.' }
+      const msefFigures = [
+        { no: 'MSEF 01', src: 'fig_framework_overview.png', title: 'MSEF Framework Overview', body: 'The main framework: continuous manifold evolution above, cascaded bidirectional decipherment below.', wide: true },
+        { no: 'MSEF 02', src: 'neural_ode_diagram.png', title: 'Neural ODE Dynamics', body: 'The continuous flow operator moves character representations between historical manifolds.' },
+        { no: 'MSEF 03', src: 'MSEF_Architecture_Diagram.png', title: 'Architecture', body: 'Feature extraction, manifold encoding, velocity fields, survival prediction, and verification are connected in one pipeline.' }
       ];
 
       const preFigures = [
-        { no: 'Pre 01', src: 'pre1-abstraction.png', title: 'Invariant Core, Variant Surface', body: 'A character can preserve a latent identity while its visual surface changes across eras.' },
-        { no: 'Pre 02', src: 'pre3-workflow.png', title: 'Research Workflow', body: 'Shows how the method is derived from failure diagnosis rather than added as an isolated model choice.' },
-        { no: 'Pre 03', src: 'pre4-clustering.png', title: 'Evolution Clusters', body: 'Connects recurring evolution patterns to baseline vulnerability.' },
-        { no: 'Pre 04', src: 'pre5-rule_system.png', title: 'Rule-System Explosion', body: 'Explains why hand-built rules become difficult under variants, missing stages, and branching paths.' },
-        { no: 'Pre 05', src: 'pre6-neuralode.png', title: 'Why Neural ODEs', body: 'Provides the conceptual bridge from discrete historical evidence to continuous trajectory modeling.' }
+        { no: 'Pre 01', src: 'pre1-abstraction.png', title: 'Invariant Core, Variant Surface', body: 'A character can preserve latent identity while its visible surface changes.' },
+        { no: 'Pre 02', src: 'pre3-workflow.png', title: 'Research Workflow', body: 'The method is derived from failure diagnosis, not added as an isolated design choice.' },
+        { no: 'Pre 03', src: 'pre4-clustering.png', title: 'Evolution Clusters', body: 'Recurring evolution patterns explain why some baselines fail.' },
+        { no: 'Pre 04', src: 'pre5-rule_system.png', title: 'Rule-System Explosion', body: 'Hand-built rules become difficult under variants, missing stages, and branching paths.' },
+        { no: 'Pre 05', src: 'pre6-neuralode.png', title: 'Why Neural ODEs', body: 'Continuous dynamics bridge discrete historical evidence and trajectory modeling.' }
       ];
 
       const cbedFigures = [
-        { no: 'CBED 01', src: 'fig3.png', title: 'Representative Trajectories', body: 'Concrete examples showing that character paths can differ substantially across eras.' },
-        { no: 'CBED 02', src: 'fig4.png', title: 'Bidirectional Verification', body: 'The key inference idea: a candidate should be plausible forward and reconstructable backward.' },
-        { no: 'CBED 03', src: 'Scenario_C_Search_Space.png', title: 'Search Space Filtering', body: 'Shows how false positives are removed within a large candidate space.' },
-        { no: 'CBED 04', src: 'extinction_landscape.png', title: 'Survival Landscape', body: 'Visualizes where glyph lines are likely to survive, split, or disappear.' },
-        { no: 'CBED 05', src: 'variant_network_large_simplified.png', title: 'Pruned Variant Backbone', body: 'Shows how pruning turns unconstrained variants into a more stable evolutionary backbone.' }
+        { no: 'CBED 01', src: 'fig3.png', title: 'Representative Trajectories', body: 'Concrete examples show that character paths can differ substantially across eras.' },
+        { no: 'CBED 02', src: 'fig4.png', title: 'Bidirectional Verification', body: 'A candidate should be plausible forward and reconstructable backward.' },
+        { no: 'CBED 03', src: 'Scenario_C_Search_Space.png', title: 'Search Space Filtering', body: 'False positives are removed from a large candidate space.' },
+        { no: 'CBED 04', src: 'extinction_landscape.png', title: 'Survival Landscape', body: 'Some glyph lines survive, split, or disappear, so survival-aware pruning is necessary.' },
+        { no: 'CBED 05', src: 'variant_network_large_simplified.png', title: 'Pruned Variant Backbone', body: 'Pruning turns unconstrained variants into a more stable evolutionary backbone.' }
       ];
 
       const postFigures = [
-        { no: 'Post 01', src: 'heatmap.png', title: 'Attention Heatmap', body: 'Shows which glyph regions the model attends to during cross-era comparison.' },
-        { no: 'Post 02', src: 'saliency_ablation.png', title: 'Saliency Ablation', body: 'Tests whether the visually highlighted regions are causally useful.' },
-        { no: 'Post 03', src: 'velocity_topology.png', title: 'Velocity Topology', body: 'Relates the learned vector field to interpretable motion across the manifold.' },
-        { no: 'Post 04', src: 'attention_circuits.png', title: 'Attention Circuits', body: 'Reveals information-routing patterns supporting cross-era matching.' },
+        { no: 'Post 01', src: 'heatmap.png', title: 'Attention Heatmap', body: 'Highlights glyph regions used during cross-era comparison.' },
+        { no: 'Post 02', src: 'saliency_ablation.png', title: 'Saliency Ablation', body: 'Tests whether highlighted regions are causally useful.' },
+        { no: 'Post 03', src: 'velocity_topology.png', title: 'Velocity Topology', body: 'Relates the learned vector field to interpretable manifold motion.' },
+        { no: 'Post 04', src: 'attention_circuits.png', title: 'Attention Circuits', body: 'Reveals information-routing patterns that support cross-era matching.' },
         { no: 'Post 05', src: 'causal_patching_modified.png', title: 'Causal Patching', body: 'Perturbs internal representations to test which components support decipherment.' },
-        { no: 'Post 06', src: 'vector_arithmetic_similarity.png', title: 'Vector Arithmetic', body: 'Shows that the learned space encodes structured relations, not isolated image templates.' },
-        { no: 'Post 07', src: 'fig5.png', title: 'Radical Group Geometry', body: 'Validates whether known radical families cluster coherently in the learned manifold.' }
+        { no: 'Post 06', src: 'vector_arithmetic_similarity.png', title: 'Vector Arithmetic', body: 'The learned space encodes structured relations rather than isolated templates.' },
+        { no: 'Post 07', src: 'fig5.png', title: 'Radical Group Geometry', body: 'Known radical families should form coherent neighborhoods in the learned manifold.' }
       ];
 
-      const fullPlates = [
-        { no: 'Plate A', src: 'manifold_neighborhood.png', title: 'Manifold Neighborhood Visualization (Visual & Semantic Similarity Clusters)', body: 'Read this as local geometric evidence: neighboring glyphs should be visually and semantically related, making the learned manifold interpretable.' },
-        { no: 'Plate B', src: 'dataset_finegrained.png', title: 'Fine-Grained Evolutionary Trajectories', body: 'This dense plate demonstrates the dataset’s value: the model is trained on temporally fine-grained cross-era correspondences, not isolated snapshots.' },
-        { no: 'Plate C', src: 'gallery_full.png', title: 'Comprehensive Retrieval Gallery', body: 'This gallery gives qualitative evidence across many examples, complementing the aggregate benchmark table.' },
-        { no: 'Plate D', src: 'variant_network_large.png', title: 'Unconstrained Global Variant Network of Archaic Scripts', body: 'This plate shows the scale of historical variation and why a flat nearest-neighbor search is not enough.' }
+      const plates = [
+        { kind: 'single', src: 'manifold_neighborhood.png', title: 'Manifold Neighborhood Visualization', body: 'Neighboring glyphs should be visually and semantically related, making the learned manifold interpretable.' },
+        { kind: 'single', src: 'dataset_finegrained.png', title: 'Fine-Grained Evolutionary Trajectories', body: 'This dense figure demonstrates temporally fine-grained cross-era correspondences.' },
+        { kind: 'single', src: 'gallery_full.png', title: 'Comprehensive Retrieval Gallery', body: 'A qualitative gallery across many examples, complementing the benchmark table.' },
+        {
+          kind: 'pages',
+          title: 'Unconstrained Global Variant Network of Archaic Scripts',
+          body: 'The original dense network is split into six pages so oracle-bone and bronze-script cluster mappings can be inspected comfortably.',
+          pages: [
+            { src: 'variant_network_large_page_01.png', label: 'Page 1', caption: 'Cluster mappings, page 1.' },
+            { src: 'variant_network_large_page_02.png', label: 'Page 2', caption: 'Cluster mappings, page 2.' },
+            { src: 'variant_network_large_page_03.png', label: 'Page 3', caption: 'Cluster mappings, page 3.' },
+            { src: 'variant_network_large_page_04.png', label: 'Page 4', caption: 'Cluster mappings, page 4.' },
+            { src: 'variant_network_large_page_05.png', label: 'Page 5', caption: 'Cluster mappings, page 5.' },
+            { src: 'variant_network_large_page_06.png', label: 'Page 6', caption: 'Cluster mappings, page 6.' }
+          ]
+        }
       ];
 
       function pad4(n) { return String(n).padStart(4, '0'); }
@@ -974,9 +1010,7 @@
       function play() {
         if (timer) return;
         playButton.innerHTML = '<i class="fa-solid fa-pause"></i> Pause';
-        timer = window.setInterval(() => {
-          updateFrame(currentFrame >= FRAME_TOTAL ? 1 : currentFrame + 1);
-        }, FRAME_INTERVAL_MS);
+        timer = window.setInterval(() => updateFrame(currentFrame >= FRAME_TOTAL ? 1 : currentFrame + 1), FRAME_INTERVAL_MS);
       }
       function pause() {
         if (timer) window.clearInterval(timer);
@@ -1016,40 +1050,59 @@
       }
       updateFrame(1);
 
-      function figureTemplate(fig, extraClass = '') {
-        const classes = ['figure-card', extraClass, fig.wide ? 'wide large' : 'compact'].filter(Boolean).join(' ');
+      function figureTemplate(fig) {
+        const classes = ['figure-card', fig.wide ? 'large' : ''].filter(Boolean).join(' ');
         return `
           <article class="${classes}" data-src="${fig.src}" data-title="${fig.title}" data-caption="${fig.body}">
             <div class="figure-head"><span class="figure-no">${fig.no}</span><span class="figure-title">${fig.title}</span></div>
             <div class="figure-media"><img alt="${fig.title}"></div>
-            <div class="figure-body"><p><strong>What to notice.</strong> ${fig.body}</p><div class="figure-actions"><button class="btn light small view-figure" type="button">Full scale</button></div></div>
+            <div class="figure-body"><p>${fig.body}</p><div class="figure-actions"><button class="btn light small view-figure" type="button">Full scale</button></div></div>
           </article>
         `;
       }
-      function renderFigureGroup(id, figures, extraClass = '') {
+      function renderFigureGroup(id, figures) {
         const target = document.getElementById(id);
         if (!target) return;
-        target.innerHTML = figures.map(fig => figureTemplate(fig, extraClass)).join('');
+        target.innerHTML = figures.map(figureTemplate).join('');
       }
-      function renderFullPlates() {
-        const target = document.getElementById('fullPlates');
-        target.innerHTML = fullPlates.map(plate => `
-          <article class="full-plate" data-src="${plate.src}" data-title="${plate.title}" data-caption="${plate.body}">
-            <div class="plate-copy">
-              <div><h3>${plate.title}</h3><p>${plate.body}</p></div>
-              <button class="btn light small view-figure" type="button">Full scale</button>
-            </div>
-            <div class="plate-media"><img alt="${plate.title}"></div>
-          </article>
-        `).join('');
+
+      function renderPlates() {
+        const target = document.getElementById('platesGrid');
+        target.innerHTML = plates.map((plate, index) => {
+          if (plate.kind === 'pages') {
+            return `
+              <article class="plate variant-viewer" data-variant-index="${index}">
+                <div class="plate-copy">
+                  <div><h3>${plate.title}</h3><p>${plate.body}</p></div>
+                </div>
+                <div class="plate-media">
+                  <div class="variant-stack">
+                    ${plate.pages.map((page, i) => `
+                      <figure data-src="${page.src}" data-title="${plate.title} · ${page.label}" data-caption="${page.caption}">
+                        <img alt="${plate.title} ${page.label}">
+                        <p class="variant-page-label">${page.label}</p>
+                      </figure>`).join('')}
+                  </div>
+                </div>
+              </article>`;
+          }
+          return `
+            <article class="plate" data-src="${plate.src}" data-title="${plate.title}" data-caption="${plate.body}">
+              <div class="plate-copy">
+                <div><h3>${plate.title}</h3><p>${plate.body}</p></div>
+                <button class="btn light small view-figure" type="button">Full scale</button>
+              </div>
+              <div class="plate-media"><img alt="${plate.title}"></div>
+            </article>`;
+        }).join('');
       }
 
       renderFigureGroup('datasetFigures', datasetFigures);
-      renderFigureGroup('methodFigures', methodFigures);
+      renderFigureGroup('msefFigures', msefFigures);
       renderFigureGroup('preFigures', preFigures);
       renderFigureGroup('cbedFigures', cbedFigures);
       renderFigureGroup('postFigures', postFigures);
-      renderFullPlates();
+      renderPlates();
 
       function initializeFigures() {
         document.querySelectorAll('[data-src]').forEach(card => {
@@ -1060,8 +1113,17 @@
           img.onerror = () => card.classList.add('is-missing');
           img.src = IMAGE_ROOT + src;
         });
+
+
       }
       initializeFigures();
+
+      document.querySelectorAll('.chapter.collapsible').forEach(chapter => {
+        chapter.addEventListener('click', event => {
+          if (event.target.closest('.view-figure')) return;
+          chapter.classList.toggle('open');
+        });
+      });
 
       const modal = document.getElementById('figureModal');
       const modalImage = document.getElementById('modalImage');
@@ -1069,21 +1131,33 @@
       const modalCaption = document.getElementById('modalCaption');
       const closeModal = document.getElementById('closeModal');
 
+      function openModal(src, title, caption) {
+        if (!src) return;
+        modalTitle.textContent = title || 'Figure';
+        modalCaption.textContent = caption || '';
+        modalImage.src = src;
+        modalImage.alt = title || 'Figure';
+        modal.classList.add('open');
+      }
+
       document.addEventListener('click', (event) => {
         const button = event.target.closest('.view-figure');
-        if (!button) return;
-        const card = button.closest('[data-src]');
-        if (!card || card.classList.contains('is-missing')) return;
-        const img = card.querySelector('img');
-        const title = card.getAttribute('data-title') || 'Figure';
-        const caption = card.getAttribute('data-caption') || '';
-        if (!img || !img.src) return;
-        modalTitle.textContent = title;
-        modalCaption.textContent = caption;
-        modalImage.src = img.src;
-        modalImage.alt = title;
-        modal.classList.add('open');
+        if (button) {
+          const card = button.closest('[data-src]');
+          if (!card || card.classList.contains('is-missing')) return;
+          const img = card.querySelector('img');
+          openModal(img && img.src, card.dataset.title, card.dataset.caption);
+          return;
+        }
+
+        const variantFigure = event.target.closest('.variant-stack figure');
+        if (variantFigure) {
+          if (variantFigure.classList.contains('is-missing')) return;
+          const img = variantFigure.querySelector('img');
+          openModal(img && img.src, variantFigure.dataset.title, variantFigure.dataset.caption);
+        }
       });
+
       function closeFigureModal() { modal.classList.remove('open'); modalImage.src = ''; }
       closeModal.addEventListener('click', closeFigureModal);
       modal.addEventListener('click', event => { if (event.target === modal) closeFigureModal(); });
