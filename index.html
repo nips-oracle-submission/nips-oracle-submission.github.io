@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MSEF · Oracle Bone Decipherment</title>
-  <meta name="description" content="Interactive project page for MSEF, a continuous manifold framework for Chinese script evolution and oracle bone decipherment." />
+  <meta name="description" content="MSEF is a continuous manifold framework for Chinese script evolution and oracle bone decipherment." />
   <meta property="og:title" content="MSEF · Oracle Bone Decipherment" />
   <meta property="og:description" content="A continuous-manifold view of Chinese script evolution with survival-aware bidirectional decipherment." />
   <meta property="og:type" content="website" />
@@ -416,7 +416,7 @@
       max-height: 108px;
       overflow: hidden;
       position: relative;
-      transition: max-height .42s ease, box-shadow .24s ease;
+      transition: max-height .26s ease, box-shadow .20s ease;
     }
     .chapter.collapsible::after {
       content: '';
@@ -426,11 +426,13 @@
       background: linear-gradient(180deg, rgba(255,250,242,0), rgba(255,250,242,1));
       pointer-events: none;
     }
-    .chapter.collapsible:hover {
+    .chapter.collapsible:hover,
+    .chapter.collapsible.quick-preview {
       max-height: 1800px;
       box-shadow: 0 18px 42px rgba(45,22,13,0.10);
     }
-    .chapter.collapsible:hover::after { opacity: 0; }
+    .chapter.collapsible:hover::after,
+    .chapter.collapsible.quick-preview::after { opacity: 0; }
 
     .support-strip {
       margin-top: 16px;
@@ -439,9 +441,10 @@
       background: rgba(255,250,242,0.74);
       max-height: 58px;
       overflow: hidden;
-      transition: max-height .36s ease, box-shadow .22s ease;
+      transition: max-height .24s ease, box-shadow .18s ease;
     }
-    .support-strip:hover {
+    .support-strip:hover,
+    .support-strip.quick-preview {
       max-height: 760px;
       box-shadow: 0 14px 34px rgba(45,22,13,0.10);
     }
@@ -792,12 +795,12 @@
     /* Subtle scroll-triggered motion */
     .scroll-reveal {
       opacity: 0;
-      transform: translateY(22px);
-      filter: blur(2px);
+      transform: translateY(14px);
+      filter: blur(.6px);
       transition:
-        opacity .70s ease,
-        transform .70s cubic-bezier(.2,.8,.2,1),
-        filter .70s ease;
+        opacity .46s ease,
+        transform .46s cubic-bezier(.2,.8,.2,1),
+        filter .46s ease;
       transition-delay: var(--reveal-delay, 0ms);
       will-change: opacity, transform, filter;
     }
@@ -806,9 +809,9 @@
       transform: translateY(0);
       filter: blur(0);
     }
-    .scroll-reveal.reveal-left { transform: translateX(-16px); }
+    .scroll-reveal.reveal-left { transform: translateX(-10px); }
     .scroll-reveal.reveal-left.in-view { transform: translateX(0); }
-    .scroll-reveal.reveal-right { transform: translateX(16px); }
+    .scroll-reveal.reveal-right { transform: translateX(10px); }
     .scroll-reveal.reveal-right.in-view { transform: translateX(0); }
 
 
@@ -988,8 +991,8 @@
       border-radius: 999px;
       border: 2px solid #fffaf2;
     }
-    .variant-viewer .plate-copy::after {
-      content: 'Auto-scrolls on view · hover to pause';
+    .variant-viewer .plate-copy::after,
+    .plate.has-scroll-window .plate-copy::after {
       font-family: 'IBM Plex Mono', monospace;
       color: var(--bronze);
       font-size: .72rem;
@@ -1015,6 +1018,35 @@
       margin: 0;
       padding: 0;
       border: 0;
+    }
+
+
+    .plate.has-scroll-window .plate-media {
+      position: relative;
+    }
+    .plate.has-scroll-window .plate-media::before,
+    .plate.has-scroll-window .plate-media::after {
+      content: '';
+      position: sticky;
+      display: block;
+      left: 0;
+      right: 0;
+      height: 26px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .plate.has-scroll-window .plate-media::before {
+      top: 0;
+      margin-bottom: -26px;
+      background: linear-gradient(#fff, rgba(255,255,255,0));
+    }
+    .plate.has-scroll-window .plate-media::after {
+      bottom: 0;
+      margin-top: -26px;
+      background: linear-gradient(rgba(255,255,255,0), #fff);
+    }
+    .plate.has-scroll-window .plate-copy::after {
+      content: 'Continuous visual plate · pause on pointer hover';
     }
 
     @media (max-width: 900px) {
@@ -1065,9 +1097,9 @@
 
   <header id="top" class="hero page">
     <div class="hero-content">
-      <div class="eyebrow"><i class="fa-solid fa-scroll"></i> NeurIPS 2026 submission · Interactive project page</div>
+      <div class="eyebrow"><i class="fa-solid fa-scroll"></i> NeurIPS 2026 Submission · Oracle Bone Decipherment</div>
       <h1 class="hero-title">A Unified Manifold Framework for Modeling Chinese Script Evolution with Application to Oracle Bone Decipherment</h1>
-      <p class="hero-subtitle">This project page walks through the idea in the same order a reader needs it: why oracle decipherment is hard, what kind of data can support it, how MSEF models evolution, how CBED verifies candidates, and what evidence shows the model is learning structure.</p>
+      <p class="hero-subtitle">We present a continuous-manifold approach to Chinese script evolution, connecting fragmentary oracle-bone evidence, cross-era supervision, Neural ODE transition dynamics, and survival-aware bidirectional decipherment.</p>
       <div class="meta-line"><span>Anonymous Authors</span><span>Anonymous Institution</span></div>
       <div class="link-row">
         <a class="pill-link" href="#" aria-label="Paper link"><i class="fa-solid fa-file-lines"></i> Paper</a>
@@ -1084,7 +1116,7 @@
           <div class="section-kicker">Abstract</div>
           <h2 class="section-title">1.&nbsp;Abstract</h2>
         </div>
-        <p class="section-lede">A project page should read like the paper: first explain the task, then show why the method is needed, and only then introduce the interactive and visual evidence.</p>
+        <p class="section-lede">We introduce MSEF, a framework that treats oracle-bone decipherment as a problem of reconstructing historical script trajectories rather than matching isolated glyph images.</p>
       </div>
       <div class="abstract-card">
         <p>Oracle Bone Inscription decipherment is difficult because many ancient glyphs do not map cleanly to one later script form. Existing computational methods often compare OBI with a single later period independently, but characters may change non-monotonically across Bronze, Seal, Clerical, and modern scripts. We propose the <strong>Manifold-based Script Evolution Framework (MSEF)</strong>, which models Chinese script evolution as continuous movement through era-specific manifolds. A Neural ODE learns inter-era transition dynamics, while a survival-aware bidirectional inference procedure recalls plausible candidates forward and verifies them backward. The accompanying dataset preserves fine-grained temporal, regional, and cross-era correspondences so that incomplete historical chains can still supervise the model.</p>
@@ -1158,7 +1190,7 @@
             <div class="stat-box"><div class="stat-value">13.7K</div><div class="stat-label">partial cross-era pairs</div></div>
           </div>
           <div class="link-row">
-            <a class="btn light" href="https://github.com/nips-oracle-submission/nips-oracle-submission/blob/main/data_mini.zip" target="_blank" rel="noopener"><i class="fa-solid fa-database"></i> Download mini dataset</a>
+            <a class="btn light" href="https://github.com/nips-oracle-submission/nips-oracle-submission/blob/main/data_mini.zip" target="_blank" rel="noopener"><i class="fa-solid fa-database"></i> Mini dataset</a>
             <a class="btn light" href="https://github.com/nips-oracle-submission/nips-oracle-submission" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Repository</a>
           </div>
         </div>
@@ -1177,7 +1209,7 @@
 
       <div class="method-rail">
         <div class="method-item"><span class="num">01</span><h3>Diagnose</h3><p>Show why direct generation, retrieval, and hand-built rules break when intermediate evidence is missing.</p></div>
-        <div class="method-item"><span class="num">02</span><h3>Model</h3><p>Place each glyph in an era-conditioned manifold and learn inter-era movement with Neural ODEs.</p></div>
+        <div class="method-item"><span class="num">02</span><h3>Model</h3><p>Represent each glyph as an era-conditioned manifold state and learn inter-era movement with Neural ODEs.</p></div>
         <div class="method-item"><span class="num">03</span><h3>Verify</h3><p>Recall candidates forward, prune implausible or extinct paths, and check consistency by tracing backward.</p></div>
         <div class="method-item"><span class="num">04</span><h3>Inspect</h3><p>Use mechanistic visualizations to test whether the learned geometry reflects paleographic structure.</p></div>
       </div>
@@ -1193,7 +1225,7 @@
       </div>
 
       <div class="chapter collapsible" tabindex="0">
-        <div class="chapter-title"><h3>1. Pre-Exploratory Diagnosis</h3><span class="chapter-label">Hover to expand</span></div>
+        <div class="chapter-title"><h3>1. Pre-Exploratory Diagnosis</h3><span class="chapter-label">Diagnostic figures</span></div>
         <p class="chapter-intro">These figures motivate the method: missing stages, branching variants, and rule explosion make isolated matching brittle.</p>
         <div class="figure-grid two" id="preFigures"></div>
       </div>
@@ -1203,7 +1235,7 @@
         <p class="chapter-intro">These figures show the learned state space: glyphs become era-conditioned points, and Neural ODEs describe how they move through history.</p>
         <div class="figure-grid two" id="msefMainFigures"></div>
         <div class="support-strip">
-          <div class="support-strip-title"><span>Supporting method diagrams</span><span>Hover to expand</span></div>
+          <div class="support-strip-title"><span>Supporting method diagrams</span><span>Additional views</span></div>
           <div class="figure-grid two" id="msefSupportFigures"></div>
         </div>
       </div>
@@ -1215,7 +1247,7 @@
       </div>
 
       <div class="chapter collapsible" tabindex="0">
-        <div class="chapter-title"><h3>4. Post-Analysis: What the Model Learns</h3><span class="chapter-label">Hover to expand</span></div>
+        <div class="chapter-title"><h3>4. Post-Analysis: What the Model Learns</h3><span class="chapter-label">Mechanistic figures</span></div>
         <p class="chapter-intro">These figures test the learned mechanism: where the model attends, what features matter causally, and whether the learned geometry has interpretable structure.</p>
         <div class="figure-grid three" id="postFigures"></div>
       </div>
@@ -1403,7 +1435,7 @@
 
       function renderTabs() {
         tabs.innerHTML = characters.map((char, index) => `
-          <button class="char-tab${index === 0 ? ' active' : ''}" type="button" data-key="${char.key}" aria-label="Show ${char.roman} evolution">
+          <button class="char-tab${index === 0 ? ' active' : ''}" type="button" data-key="${char.key}" aria-label="${char.roman} evolution">
             <span>${char.glyph}</span><span>${char.roman}</span>
           </button>
         `).join('');
@@ -1498,7 +1530,7 @@
           <article class="${classes}" data-src="${fig.src}" data-title="${fig.title}" data-caption="${fig.body}">
             <div class="figure-head"><span class="figure-no">${fig.no}</span><span class="figure-title">${fig.title}</span></div>
             <div class="figure-media"><img alt="${fig.title}"></div>
-            <div class="figure-body"><p><span class="caption-label">Figure caption.</span> ${fig.body}</p><div class="figure-actions"><button class="btn light small view-figure" type="button">Full scale</button></div></div>
+            <div class="figure-body"><p><span class="caption-label">Figure caption.</span> ${fig.body}</p><div class="figure-actions"><button class="btn light small view-figure" type="button">Open figure</button></div></div>
           </article>
         `;
       }
@@ -1513,7 +1545,7 @@
         target.innerHTML = plates.map((plate, index) => {
           if (plate.kind === 'pages') {
             return `
-              <article class="plate variant-viewer" data-variant-index="${index}">
+              <article class="plate variant-viewer has-scroll-window" data-variant-index="${index}">
                 <div class="plate-copy">
                   <div><h3>${plate.title}</h3><p><span class="caption-label">Plate caption.</span> ${plate.body}</p></div>
                 </div>
@@ -1531,7 +1563,7 @@
             <article class="plate" data-src="${plate.src}" data-title="${plate.title}" data-caption="${plate.body}">
               <div class="plate-copy">
                 <div><h3>${plate.title}</h3><p><span class="caption-label">Plate caption.</span> ${plate.body}</p></div>
-                <button class="btn light small view-figure" type="button">Full scale</button>
+                <button class="btn light small view-figure" type="button">Open figure</button>
               </div>
               <div class="plate-media"><img alt="${plate.title}"></div>
             </article>`;
@@ -1628,7 +1660,7 @@
           const state = states.get(viewer);
           if (!state || !state.active) return;
           if (!state.paused && viewer.scrollHeight > viewer.clientHeight + 8) {
-            viewer.scrollTop += 0.45 * state.direction;
+            viewer.scrollTop += 0.32 * state.direction;
             if (viewer.scrollTop + viewer.clientHeight >= viewer.scrollHeight - 4) state.direction = -1;
             if (viewer.scrollTop <= 4) state.direction = 1;
           }
@@ -1654,6 +1686,32 @@
         viewers.forEach(viewer => observer.observe(viewer));
       }
       initVariantAutoScroll();
+
+
+      function initHiddenContentPreview() {
+        if (!('IntersectionObserver' in window)) return;
+        const hiddenBlocks = document.querySelectorAll('.chapter.collapsible, .support-strip');
+        const previewed = new WeakSet();
+
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            const el = entry.target;
+            if (!entry.isIntersecting || previewed.has(el)) return;
+            previewed.add(el);
+
+            window.setTimeout(() => {
+              el.classList.add('quick-preview');
+              window.setTimeout(() => {
+                el.classList.remove('quick-preview');
+              }, 820);
+            }, 180);
+          });
+        }, { threshold: 0.34, rootMargin: '0px 0px -10% 0px' });
+
+        hiddenBlocks.forEach(el => observer.observe(el));
+      }
+      initHiddenContentPreview();
+
 
       function initReadingProgress() {
         const progress = document.getElementById('readingProgress');
