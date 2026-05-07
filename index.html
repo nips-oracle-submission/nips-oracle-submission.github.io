@@ -473,6 +473,71 @@
     .figure-body p { margin: 0; color: var(--ink-2); font-size: .93rem; line-height: 1.55; }
     .figure-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
 
+    /* Uniform layout for Pre/Post figure grids */
+
+    #cbedFigures {
+      align-items: stretch;
+      grid-auto-rows: 1fr;
+    }
+    #cbedFigures .figure-card {
+      height: 100%;
+    }
+
+    #preFigures,
+    #postFigures {
+      align-items: stretch;
+      grid-auto-rows: 1fr;
+    }
+    #preFigures .figure-card,
+    #postFigures .figure-card {
+      height: 100%;
+    }
+    #preFigures .figure-head,
+    #postFigures .figure-head {
+      min-height: 48px;
+    }
+    #preFigures .figure-title,
+    #postFigures .figure-title {
+      min-height: 2.2em;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    #preFigures .figure-media,
+    #postFigures .figure-media {
+      height: 235px;
+      min-height: 235px;
+      max-height: 235px;
+      padding: 12px;
+      background:
+        radial-gradient(circle at center, rgba(216,163,107,0.08), transparent 62%),
+        #fff;
+    }
+    #preFigures .figure-media img,
+    #postFigures .figure-media img {
+      width: 100%;
+      height: 100%;
+      max-height: none;
+      object-fit: contain;
+      object-position: center;
+    }
+    #preFigures .figure-body,
+    #postFigures .figure-body {
+      min-height: 132px;
+    }
+    #preFigures .figure-body p,
+    #postFigures .figure-body p {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    #preFigures .figure-actions,
+    #postFigures .figure-actions {
+      margin-top: auto;
+      padding-top: 12px;
+    }
+
     .plates-grid { display: grid; gap: 20px; }
     .plate {
       border: 1px solid rgba(155,79,24,0.16);
@@ -509,19 +574,42 @@
       background: #fff;
     }
 
-    .variant-viewer .plate-media { display: block; padding: 0; background: #fff; max-height: none; overflow: visible; }
-    .variant-stack { display: grid; gap: 0; }
-    .variant-stack figure { margin: 0; }
-    .variant-stack figure + figure { border-top: 1px solid rgba(155,79,24,0.10); }
-    .variant-stack img { width: 100%; height: auto; max-height: none; object-fit: contain; border: 0; border-radius: 0; background: #fff; display: block; }
-    .variant-stack .variant-page-label {
+    .variant-viewer .plate-media {
+      display: block;
+      padding: 0;
+      background: #fff;
+      max-height: none;
+      overflow: visible;
+    }
+    .variant-stack {
+      display: block;
+      line-height: 0;
+      font-size: 0;
+      background: #fff;
+    }
+    .variant-stack figure {
       margin: 0;
-      padding: 8px 14px;
-      color: var(--muted);
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: .72rem;
-      letter-spacing: .04em;
-      background: #fffdf8;
+      padding: 0;
+      border: 0;
+      line-height: 0;
+      font-size: 0;
+      background: #fff;
+      cursor: zoom-in;
+    }
+    .variant-stack figure.is-missing {
+      display: none;
+    }
+    .variant-stack img {
+      width: 100%;
+      height: auto;
+      max-height: none;
+      object-fit: contain;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: block;
+      margin: 0;
+      padding: 0;
     }
 
     .results-table-wrap { overflow-x: auto; margin-top: 20px; border: 1px solid rgba(155,79,24,0.15); border-radius: 16px; }
@@ -578,6 +666,43 @@
     .modal-content img { margin: 0 auto; max-width: none; width: auto; max-height: none; }
     .modal-caption { color: var(--muted); margin: 12px 0 0; }
 
+
+    /* Subtle scroll-triggered motion */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      filter: blur(2px);
+      transition:
+        opacity .72s ease,
+        transform .72s cubic-bezier(.2,.8,.2,1),
+        filter .72s ease;
+      transition-delay: var(--reveal-delay, 0ms);
+      will-change: opacity, transform, filter;
+    }
+    .scroll-reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+    .scroll-reveal.reveal-soft {
+      transform: translateY(14px) scale(.985);
+    }
+    .scroll-reveal.reveal-soft.in-view {
+      transform: translateY(0) scale(1);
+    }
+    .scroll-reveal.reveal-left {
+      transform: translateX(-18px);
+    }
+    .scroll-reveal.reveal-left.in-view {
+      transform: translateX(0);
+    }
+    .scroll-reveal.reveal-right {
+      transform: translateX(18px);
+    }
+    .scroll-reveal.reveal-right.in-view {
+      transform: translateX(0);
+    }
+
     @media (max-width: 900px) {
       .page, .nav-inner { width: min(var(--max), calc(100vw - 28px)); }
       .nav-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
@@ -586,6 +711,8 @@
       .method-item:last-child { border-bottom: 0; }
       .frame-stage { min-height: 340px; }
       .section-header { grid-template-columns: 1fr; }
+      #preFigures .figure-media, #postFigures .figure-media { height: 220px; min-height: 220px; max-height: 220px; }
+
       .stat-row { grid-template-columns: 1fr; }
       .plate-copy, .chapter-title { grid-template-columns: 1fr; }
     }
@@ -595,6 +722,7 @@
       .lab-card { padding: 14px; }
       .char-tab { width: 58px; height: 58px; }
       .frame-stage { min-height: 280px; padding: 12px; }
+      #preFigures .figure-media, #postFigures .figure-media { height: 190px; min-height: 190px; max-height: 190px; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -752,7 +880,7 @@
       <div class="chapter collapsible" tabindex="0">
         <div class="chapter-title"><h3>1. Pre-Exploratory Diagnosis</h3><span class="chapter-label">Hover to expand</span></div>
         <p class="chapter-intro">Why a continuous model is needed: missing stages, branching variants, and rule explosion make isolated matching brittle.</p>
-        <div class="figure-grid three" id="preFigures"></div>
+        <div class="figure-grid two" id="preFigures"></div>
       </div>
 
       <div class="chapter">
@@ -780,7 +908,7 @@
           <div class="section-kicker">Visual plates</div>
           <h2 class="section-title">6. Dense Figures Displayed Without Cropping</h2>
         </div>
-        <p class="section-lede">These figures are too dense for small cards. They are shown as separate plates, with the global variant network split into six readable pages.</p>
+        <p class="section-lede">These dense figures are shown as standalone plates. The global variant network is stitched vertically so it reads as one continuous visual, not as separated pages.</p>
       </div>
       <div class="plates-grid" id="platesGrid"></div>
     </section>
@@ -877,18 +1005,16 @@
 
       const preFigures = [
         { no: 'Pre 01', src: 'pre1-abstraction.png', title: 'Invariant Core, Variant Surface', body: 'A character can preserve latent identity while its visible surface changes.' },
-        { no: 'Pre 02', src: 'pre3-workflow.png', title: 'Research Workflow', body: 'The method is derived from failure diagnosis, not added as an isolated design choice.' },
-        { no: 'Pre 03', src: 'pre4-clustering.png', title: 'Evolution Clusters', body: 'Recurring evolution patterns explain why some baselines fail.' },
-        { no: 'Pre 04', src: 'pre5-rule_system.png', title: 'Rule-System Explosion', body: 'Hand-built rules become difficult under variants, missing stages, and branching paths.' },
-        { no: 'Pre 05', src: 'pre6-neuralode.png', title: 'Why Neural ODEs', body: 'Continuous dynamics bridge discrete historical evidence and trajectory modeling.' }
+        { no: 'Pre 02', src: 'pre4-clustering.png', title: 'Evolution Clusters', body: 'Recurring evolution patterns explain why some baselines fail.' },
+        { no: 'Pre 03', src: 'pre5-rule_system.png', title: 'Rule-System Explosion', body: 'Hand-built rules become difficult under variants, missing stages, and branching paths.' },
+        { no: 'Pre 04', src: 'pre6-neuralode.png', title: 'Why Neural ODEs', body: 'Continuous dynamics bridge discrete historical evidence and trajectory modeling.' }
       ];
 
       const cbedFigures = [
         { no: 'CBED 01', src: 'fig3.png', title: 'Representative Trajectories', body: 'Concrete examples show that character paths can differ substantially across eras.' },
         { no: 'CBED 02', src: 'fig4.png', title: 'Bidirectional Verification', body: 'A candidate should be plausible forward and reconstructable backward.' },
         { no: 'CBED 03', src: 'Scenario_C_Search_Space.png', title: 'Search Space Filtering', body: 'False positives are removed from a large candidate space.' },
-        { no: 'CBED 04', src: 'extinction_landscape.png', title: 'Survival Landscape', body: 'Some glyph lines survive, split, or disappear, so survival-aware pruning is necessary.' },
-        { no: 'CBED 05', src: 'variant_network_large_simplified.png', title: 'Pruned Variant Backbone', body: 'Pruning turns unconstrained variants into a more stable evolutionary backbone.' }
+        { no: 'CBED 04', src: 'extinction_landscape.png', title: 'Survival Landscape', body: 'Some glyph lines survive, split, or disappear, so survival-aware pruning is necessary.' }
       ];
 
       const postFigures = [
@@ -897,8 +1023,7 @@
         { no: 'Post 03', src: 'velocity_topology.png', title: 'Velocity Topology', body: 'Relates the learned vector field to interpretable manifold motion.' },
         { no: 'Post 04', src: 'attention_circuits.png', title: 'Attention Circuits', body: 'Reveals information-routing patterns that support cross-era matching.' },
         { no: 'Post 05', src: 'causal_patching_modified.png', title: 'Causal Patching', body: 'Perturbs internal representations to test which components support decipherment.' },
-        { no: 'Post 06', src: 'vector_arithmetic_similarity.png', title: 'Vector Arithmetic', body: 'The learned space encodes structured relations rather than isolated templates.' },
-        { no: 'Post 07', src: 'fig5.png', title: 'Radical Group Geometry', body: 'Known radical families should form coherent neighborhoods in the learned manifold.' }
+        { no: 'Post 06', src: 'vector_arithmetic_similarity.png', title: 'Vector Arithmetic', body: 'The learned space encodes structured relations rather than isolated templates.' }
       ];
 
       const plates = [
@@ -908,7 +1033,7 @@
         {
           kind: 'pages',
           title: 'Unconstrained Global Variant Network of Archaic Scripts',
-          body: 'The original dense network is split into six pages so oracle-bone and bronze-script cluster mappings can be inspected comfortably.',
+          body: 'The six exported slices are stitched vertically into one continuous visual, so readers can inspect the oracle-bone and bronze-script cluster mappings without page breaks.',
           pages: [
             { src: 'variant_network_large_page_01.png', label: 'Page 1', caption: 'Cluster mappings, page 1.' },
             { src: 'variant_network_large_page_02.png', label: 'Page 2', caption: 'Cluster mappings, page 2.' },
@@ -1080,7 +1205,6 @@
                     ${plate.pages.map((page, i) => `
                       <figure data-src="${page.src}" data-title="${plate.title} · ${page.label}" data-caption="${page.caption}">
                         <img alt="${plate.title} ${page.label}">
-                        <p class="variant-page-label">${page.label}</p>
                       </figure>`).join('')}
                   </div>
                 </div>
@@ -1124,6 +1248,39 @@
           chapter.classList.toggle('open');
         });
       });
+
+
+      function initScrollMotion() {
+        if (!('IntersectionObserver' in window)) return;
+
+        const sections = document.querySelectorAll('.hero, .section');
+        sections.forEach((section, sectionIndex) => {
+          section.classList.add('scroll-reveal', 'reveal-soft');
+          section.style.setProperty('--reveal-delay', sectionIndex === 0 ? '0ms' : '40ms');
+
+          const children = section.querySelectorAll(
+            '.story-list li, .stat-box, .method-item, .figure-card, .plate, .char-tab'
+          );
+          children.forEach((child, index) => {
+            child.classList.add('scroll-reveal');
+            if (index % 2 === 0) child.classList.add('reveal-left');
+            else child.classList.add('reveal-right');
+            child.style.setProperty('--reveal-delay', Math.min(index * 45, 240) + 'ms');
+          });
+        });
+
+        const revealObserver = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => revealObserver.observe(el));
+      }
+      initScrollMotion();
 
       const modal = document.getElementById('figureModal');
       const modalImage = document.getElementById('modalImage');
