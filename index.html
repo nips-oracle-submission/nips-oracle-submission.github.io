@@ -811,6 +811,212 @@
     .scroll-reveal.reveal-right { transform: translateX(16px); }
     .scroll-reveal.reveal-right.in-view { transform: translateX(0); }
 
+
+    /* Archaeological motion language: bronze glow, parchment reveal, and soft ink movement */
+    .ambient-light {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(520px circle at var(--cursor-x, 50vw) var(--cursor-y, 30vh),
+          rgba(216,163,107,0.18),
+          rgba(216,163,107,0.06) 34%,
+          transparent 70%);
+      mix-blend-mode: multiply;
+      opacity: .72;
+      transition: opacity .25s ease;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 18% 22%, rgba(255,240,211,.12), transparent 28%),
+        linear-gradient(115deg, transparent 0%, rgba(255,247,233,.08) 45%, transparent 57%);
+      transform: translateX(-18%);
+      animation: bronzeSweep 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes bronzeSweep {
+      0%, 100% { transform: translateX(-18%); opacity: .35; }
+      48% { transform: translateX(18%); opacity: .62; }
+    }
+    .section {
+      position: relative;
+    }
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 24px;
+      right: 24px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(155,79,24,.42), transparent);
+      transform: scaleX(.15);
+      opacity: 0;
+      transform-origin: left;
+      transition: transform .85s cubic-bezier(.2,.8,.2,1), opacity .85s ease;
+    }
+    .section.in-view::before {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+    .section:hover {
+      box-shadow: 0 22px 70px rgba(45,22,13,0.14);
+    }
+    .section-kicker {
+      position: relative;
+    }
+    .section-kicker::after {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      margin-left: 10px;
+      vertical-align: middle;
+      background: rgba(155,79,24,.42);
+      transform-origin: left;
+      animation: smallRulePulse 3.2s ease-in-out infinite;
+    }
+    @keyframes smallRulePulse {
+      0%, 100% { transform: scaleX(.45); opacity: .45; }
+      50% { transform: scaleX(1); opacity: .9; }
+    }
+    .chapter.collapsible {
+      border-style: solid;
+      background:
+        linear-gradient(90deg, rgba(255,250,242,0.98), rgba(255,247,235,0.92)),
+        repeating-linear-gradient(90deg, rgba(155,79,24,.025) 0 1px, transparent 1px 18px);
+    }
+    .chapter.collapsible .chapter-label {
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(155,79,24,.20);
+      background: rgba(155,79,24,.07);
+      animation: sealPulse 1.8s ease-in-out infinite;
+    }
+    @keyframes sealPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(155,79,24,.18); }
+      50% { box-shadow: 0 0 0 7px rgba(155,79,24,0); }
+    }
+    .chapter.collapsible:hover .chapter-label,
+    .support-strip:hover .support-strip-title span:last-child {
+      animation: none;
+      background: var(--ink);
+      color: #fff7e9;
+      border-color: var(--ink);
+    }
+    .support-strip {
+      position: relative;
+    }
+    .support-strip::after {
+      content: '';
+      position: absolute;
+      inset: auto 16px 10px 16px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(155,79,24,.35), transparent);
+      opacity: .55;
+    }
+    .support-strip:hover::after { opacity: 0; }
+    .support-strip-title span:last-child {
+      padding: 6px 10px;
+      border: 1px solid rgba(155,79,24,.20);
+      border-radius: 999px;
+      background: rgba(155,79,24,.07);
+      animation: sealPulse 2.1s ease-in-out infinite;
+    }
+    .figure-head {
+      position: relative;
+      overflow: hidden;
+    }
+    .figure-head::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -40%;
+      width: 38%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,247,233,.18), transparent);
+      transform: skewX(-18deg);
+      transition: left .55s ease;
+    }
+    .figure-card:hover .figure-head::after,
+    .plate:hover .figure-head::after {
+      left: 108%;
+    }
+    .char-tab {
+      position: relative;
+      overflow: hidden;
+    }
+    .char-tab::after {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border-radius: inherit;
+      border: 1px solid rgba(155,79,24,.10);
+      transform: scale(.74);
+      opacity: 0;
+      transition: transform .22s ease, opacity .22s ease;
+    }
+    .char-tab:hover::after,
+    .char-tab.active::after {
+      transform: scale(1);
+      opacity: 1;
+    }
+    .phase-pill {
+      animation: gentleFloat 3.8s ease-in-out infinite;
+    }
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+    }
+
+    .variant-viewer .plate-media {
+      max-height: 780px;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scroll-behavior: smooth;
+      border-top: 1px solid rgba(155,79,24,.10);
+      scrollbar-width: thin;
+      scrollbar-color: rgba(155,79,24,.45) #fffaf2;
+    }
+    .variant-viewer .plate-media::-webkit-scrollbar { width: 10px; }
+    .variant-viewer .plate-media::-webkit-scrollbar-track { background: #fffaf2; }
+    .variant-viewer .plate-media::-webkit-scrollbar-thumb {
+      background: rgba(155,79,24,.42);
+      border-radius: 999px;
+      border: 2px solid #fffaf2;
+    }
+    .variant-viewer .plate-copy::after {
+      content: 'Auto-scrolls on view · hover to pause';
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--bronze);
+      font-size: .72rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .variant-stack {
+      line-height: 0;
+      font-size: 0;
+    }
+    .variant-stack figure {
+      margin: 0;
+      padding: 0;
+      line-height: 0;
+      font-size: 0;
+      cursor: zoom-in;
+    }
+    .variant-stack img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
     @media (max-width: 900px) {
       .page, .nav-inner { width: min(var(--max), calc(100vw - 28px)); }
       .nav-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
@@ -840,6 +1046,7 @@
 </head>
 
 <body>
+  <div class="ambient-light" aria-hidden="true"></div>
   <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
   <nav class="nav" aria-label="Main navigation">
     <div class="nav-inner">
@@ -1084,7 +1291,7 @@
 
       const IMAGE_ROOT = './img/';
       const FRAME_TOTAL = 240;
-      const FRAME_INTERVAL_MS = 150;
+      const FRAME_INTERVAL_MS = 120;
       const PRELOAD_AHEAD = 20;
 
       const characters = [
@@ -1123,10 +1330,8 @@
       ];
 
       const cbedFigures = [
-        { no: 'CBED 01', src: 'fig3.png', title: 'Representative Trajectories', body: 'Representative paths show why inference must account for character-specific trajectories.' },
-        { no: 'CBED 02', src: 'fig4.png', title: 'Bidirectional Verification', body: 'Backward checking removes candidates that look plausible only in one direction.' },
-        { no: 'CBED 03', src: 'Scenario_C_Search_Space.png', title: 'Search Space Filtering', body: 'The search-space figure shows how CBED narrows many possible matches into a smaller consistent set.' },
-        { no: 'CBED 04', src: 'extinction_landscape.png', title: 'Survival Landscape', body: 'The survival landscape explains why extinct or implausible branches should be pruned.' }
+        { no: 'CBED 01', src: 'fig4.png', title: 'Bidirectional Verification', body: 'Backward checking removes candidates that look plausible only in one direction.' },
+        { no: 'CBED 02', src: 'Scenario_C_Search_Space.png', title: 'Search Space Filtering', body: 'The search-space figure shows how CBED narrows many possible matches into a smaller consistent set.' }
       ];
 
       const postFigures = [
@@ -1134,8 +1339,8 @@
         { no: 'Post 02', src: 'saliency_ablation.png', title: 'Saliency Ablation', body: 'Ablation checks whether those highlighted regions actually matter for prediction.' },
         { no: 'Post 03', src: 'velocity_topology.png', title: 'Velocity Topology', body: 'The vector field makes the learned transition dynamics more interpretable.' },
         { no: 'Post 04', src: 'attention_circuits.png', title: 'Attention Circuits', body: 'Attention circuits show how information is routed during matching.' },
-        { no: 'Post 05', src: 'causal_patching_modified.png', title: 'Causal Patching', body: 'Causal patching tests which internal components are necessary for correct decipherment.' },
-        { no: 'Post 06', src: 'vector_arithmetic_similarity.png', title: 'Vector Arithmetic', body: 'Vector arithmetic tests whether the representation space contains reusable structure.' }
+        { no: 'Post 05', src: 'extinction_landscape.png', title: 'Survival Landscape', body: 'The survival landscape belongs to post-analysis because it explains what the survival module learns internally.' },
+        { no: 'Post 06', src: 'causal_patching_modified.png', title: 'Causal Patching', body: 'Causal patching tests which internal components are necessary for correct decipherment.' }
       ];
 
       const plates = [
@@ -1384,6 +1589,71 @@
       }
       initScrollMotion();
 
+
+
+      function initArchaeologyMotion() {
+        const root = document.documentElement;
+        let lastMove = 0;
+        window.addEventListener('pointermove', event => {
+          const now = performance.now();
+          if (now - lastMove < 24) return;
+          lastMove = now;
+          root.style.setProperty('--cursor-x', event.clientX + 'px');
+          root.style.setProperty('--cursor-y', event.clientY + 'px');
+        }, { passive: true });
+
+        const parallaxItems = document.querySelectorAll('.hero');
+        window.addEventListener('scroll', () => {
+          const y = window.scrollY || 0;
+          parallaxItems.forEach(el => {
+            el.style.setProperty('--parallax-y', (y * 0.025).toFixed(2) + 'px');
+          });
+        }, { passive: true });
+      }
+      initArchaeologyMotion();
+
+      function initVariantAutoScroll() {
+        const viewers = Array.from(document.querySelectorAll('.variant-viewer .plate-media'));
+        if (!viewers.length || !('IntersectionObserver' in window)) return;
+
+        const states = new WeakMap();
+        viewers.forEach(viewer => {
+          states.set(viewer, { active: false, paused: false, raf: null, direction: 1 });
+          viewer.addEventListener('mouseenter', () => { const s = states.get(viewer); if (s) s.paused = true; });
+          viewer.addEventListener('mouseleave', () => { const s = states.get(viewer); if (s) s.paused = false; });
+          viewer.addEventListener('wheel', () => { const s = states.get(viewer); if (s) { s.paused = true; window.setTimeout(() => { s.paused = false; }, 2200); } }, { passive: true });
+        });
+
+        function tick(viewer) {
+          const state = states.get(viewer);
+          if (!state || !state.active) return;
+          if (!state.paused && viewer.scrollHeight > viewer.clientHeight + 8) {
+            viewer.scrollTop += 0.45 * state.direction;
+            if (viewer.scrollTop + viewer.clientHeight >= viewer.scrollHeight - 4) state.direction = -1;
+            if (viewer.scrollTop <= 4) state.direction = 1;
+          }
+          state.raf = window.requestAnimationFrame(() => tick(viewer));
+        }
+
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            const viewer = entry.target;
+            const state = states.get(viewer);
+            if (!state) return;
+            if (entry.isIntersecting) {
+              state.active = true;
+              if (!state.raf) state.raf = window.requestAnimationFrame(() => tick(viewer));
+            } else {
+              state.active = false;
+              if (state.raf) window.cancelAnimationFrame(state.raf);
+              state.raf = null;
+            }
+          });
+        }, { threshold: 0.35 });
+
+        viewers.forEach(viewer => observer.observe(viewer));
+      }
+      initVariantAutoScroll();
 
       function initReadingProgress() {
         const progress = document.getElementById('readingProgress');
