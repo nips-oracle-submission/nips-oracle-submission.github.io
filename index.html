@@ -1013,11 +1013,14 @@
     }
     .variant-stack img {
       display: block;
-      width: 100%;
+      width: 168%;
+      max-width: none;
       height: auto;
-      margin: 0;
+      margin: -7.5% 0 -7.5% 50%;
       padding: 0;
       border: 0;
+      transform: translateX(-50%);
+      transform-origin: top center;
     }
 
 
@@ -1079,8 +1082,8 @@
 
     /* Variant network inspection window: fixed frame, larger slices, faster auto-scroll */
     .variant-viewer .plate-media {
-      height: min(72vh, 760px);
-      max-height: min(72vh, 760px);
+      height: min(76vh, 820px);
+      max-height: min(76vh, 820px);
       overflow-y: auto;
       overflow-x: hidden;
       padding: 0;
@@ -1115,10 +1118,10 @@
     }
     .variant-stack img {
       display: block;
-      width: 128%;
+      width: 168%;
       max-width: none;
       height: auto;
-      margin: 0 0 0 50%;
+      margin: -7.5% 0 -7.5% 50%;
       padding: 0;
       border: 0;
       border-radius: 0;
@@ -1131,6 +1134,8 @@
     }
 
     @media (max-width: 900px) {
+      .variant-stack img { width: 140%; margin: -5% 0 -5% 50%; }
+      .variant-viewer .plate-media { height: 70vh; max-height: 70vh; }
       .page, .nav-inner { width: min(var(--max), calc(100vw - 28px)); }
       .nav-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
       .evolution-grid, .figure-grid.two, .figure-grid.three, .method-rail, .keypoint-strip { grid-template-columns: 1fr; }
@@ -1774,7 +1779,7 @@
           const state = states.get(viewer);
           if (!state || !state.active) return;
           if (!state.paused && viewer.scrollHeight > viewer.clientHeight + 8) {
-            viewer.scrollTop += 0.95 * state.direction;
+            viewer.scrollTop += 1.65 * state.direction;
             if (viewer.scrollTop + viewer.clientHeight >= viewer.scrollHeight - 4) state.direction = -1;
             if (viewer.scrollTop <= 4) state.direction = 1;
           }
