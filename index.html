@@ -426,15 +426,39 @@
       background: linear-gradient(180deg, rgba(255,250,242,0), rgba(255,250,242,1));
       pointer-events: none;
     }
-    .chapter.collapsible:hover,
-    .chapter.collapsible:focus-within,
-    .chapter.collapsible.open {
+    .chapter.collapsible:hover {
       max-height: 1800px;
       box-shadow: 0 18px 42px rgba(45,22,13,0.10);
     }
-    .chapter.collapsible:hover::after,
-    .chapter.collapsible:focus-within::after,
-    .chapter.collapsible.open::after { opacity: 0; }
+    .chapter.collapsible:hover::after { opacity: 0; }
+
+    .support-strip {
+      margin-top: 16px;
+      border: 1px solid rgba(155,79,24,0.14);
+      border-radius: 16px;
+      background: rgba(255,250,242,0.74);
+      max-height: 58px;
+      overflow: hidden;
+      transition: max-height .36s ease, box-shadow .22s ease;
+    }
+    .support-strip:hover {
+      max-height: 760px;
+      box-shadow: 0 14px 34px rgba(45,22,13,0.10);
+    }
+    .support-strip-title {
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      color: var(--bronze);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(155,79,24,0.10);
+    }
+    .support-strip .figure-grid { margin: 16px; }
 
     .figure-card {
       border: 1px solid rgba(155,79,24,0.14);
@@ -596,9 +620,7 @@
       background: #fff;
       cursor: zoom-in;
     }
-    .variant-stack figure.is-missing {
-      display: none;
-    }
+    .variant-stack figure.is-missing { display: none; }
     .variant-stack img {
       width: 100%;
       height: auto;
@@ -667,15 +689,115 @@
     .modal-caption { color: var(--muted); margin: 12px 0 0; }
 
 
+
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      z-index: 120;
+      background: linear-gradient(90deg, var(--bronze), var(--bronze-2));
+      box-shadow: 0 0 18px rgba(155,79,24,.35);
+    }
+    .nav-links a.active {
+      color: var(--bronze);
+      border-color: var(--bronze-2);
+      font-weight: 800;
+    }
+    .abstract-card {
+      padding: clamp(18px, 2.4vw, 26px);
+      border: 1px solid rgba(155,79,24,0.16);
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, rgba(255,250,242,0.96), rgba(248,237,220,0.90));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.65);
+    }
+    .abstract-card p {
+      margin: 0;
+      color: var(--ink-2);
+      font-size: clamp(1rem, 1.20vw, 1.12rem);
+      line-height: 1.82;
+      text-align: justify;
+    }
+    .abstract-card strong { color: var(--ink); }
+    .keypoint-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .keypoint-strip div {
+      border: 1px solid rgba(155,79,24,0.14);
+      background: rgba(255,250,242,0.62);
+      border-radius: 14px;
+      padding: 11px 12px;
+      color: var(--muted);
+      font-size: .88rem;
+      line-height: 1.42;
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+    .keypoint-strip div:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(45,22,13,0.09);
+      border-color: rgba(155,79,24,0.24);
+    }
+    .keypoint-strip .num {
+      display: block;
+      margin-bottom: 4px;
+      font-size: .72rem;
+    }
+    .keypoint-strip strong {
+      color: var(--ink);
+      font-weight: 900;
+    }
+    .caption-label {
+      display: inline;
+      color: var(--ink);
+      font-weight: 900;
+    }
+    .figure-card,
+    .plate,
+    .method-item,
+    .stat-box,
+    .char-tab {
+      transform-origin: center;
+    }
+    .figure-card:hover,
+    .plate:hover,
+    .method-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 38px rgba(45,22,13,0.12);
+      border-color: rgba(155,79,24,0.26);
+    }
+    .figure-media img,
+    .plate-media img {
+      transition: transform .45s ease;
+    }
+    .figure-card:hover .figure-media img,
+    .plate:hover .plate-media img {
+      transform: scale(1.015);
+    }
+    .char-tab.active {
+      box-shadow: 0 10px 26px rgba(45,22,13,0.18);
+    }
+    .section.in-view .section-title {
+      animation: titleLift .72s ease both;
+    }
+    @keyframes titleLift {
+      from { letter-spacing: .015em; opacity: .75; transform: translateY(6px); }
+      to { letter-spacing: -0.01em; opacity: 1; transform: translateY(0); }
+    }
+
     /* Subtle scroll-triggered motion */
     .scroll-reveal {
       opacity: 0;
-      transform: translateY(24px);
+      transform: translateY(22px);
       filter: blur(2px);
       transition:
-        opacity .72s ease,
-        transform .72s cubic-bezier(.2,.8,.2,1),
-        filter .72s ease;
+        opacity .70s ease,
+        transform .70s cubic-bezier(.2,.8,.2,1),
+        filter .70s ease;
       transition-delay: var(--reveal-delay, 0ms);
       will-change: opacity, transform, filter;
     }
@@ -684,29 +806,15 @@
       transform: translateY(0);
       filter: blur(0);
     }
-    .scroll-reveal.reveal-soft {
-      transform: translateY(14px) scale(.985);
-    }
-    .scroll-reveal.reveal-soft.in-view {
-      transform: translateY(0) scale(1);
-    }
-    .scroll-reveal.reveal-left {
-      transform: translateX(-18px);
-    }
-    .scroll-reveal.reveal-left.in-view {
-      transform: translateX(0);
-    }
-    .scroll-reveal.reveal-right {
-      transform: translateX(18px);
-    }
-    .scroll-reveal.reveal-right.in-view {
-      transform: translateX(0);
-    }
+    .scroll-reveal.reveal-left { transform: translateX(-16px); }
+    .scroll-reveal.reveal-left.in-view { transform: translateX(0); }
+    .scroll-reveal.reveal-right { transform: translateX(16px); }
+    .scroll-reveal.reveal-right.in-view { transform: translateX(0); }
 
     @media (max-width: 900px) {
       .page, .nav-inner { width: min(var(--max), calc(100vw - 28px)); }
       .nav-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
-      .evolution-grid, .figure-grid.two, .figure-grid.three, .method-rail { grid-template-columns: 1fr; }
+      .evolution-grid, .figure-grid.two, .figure-grid.three, .method-rail, .keypoint-strip { grid-template-columns: 1fr; }
       .method-item { border-right: 0; border-bottom: 1px solid rgba(155,79,24,0.14); }
       .method-item:last-child { border-bottom: 0; }
       .frame-stage { min-height: 340px; }
@@ -732,15 +840,16 @@
 </head>
 
 <body>
+  <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
   <nav class="nav" aria-label="Main navigation">
     <div class="nav-inner">
       <a class="brand" href="#top"><span class="brand-mark">甲</span><span>MSEF · Oracle</span></a>
       <div class="nav-links">
-        <a href="#story">1 Story</a>
-        <a href="#evolution">2 Evolution</a>
+        <a href="#abstract">1 Abstract</a>
+        <a href="#evolution">2 Intuition</a>
         <a href="#dataset">3 Dataset</a>
         <a href="#method">4 Method</a>
-        <a href="#evidence">5 Evidence</a>
+        <a href="#evidence">5 Figures</a>
         <a href="#plates">6 Plates</a>
         <a href="#results">7 Results</a>
       </div>
@@ -751,7 +860,7 @@
     <div class="hero-content">
       <div class="eyebrow"><i class="fa-solid fa-scroll"></i> NeurIPS 2026 submission · Interactive project page</div>
       <h1 class="hero-title">A Unified Manifold Framework for Modeling Chinese Script Evolution with Application to Oracle Bone Decipherment</h1>
-      <p class="hero-subtitle">MSEF models a 3,000-year script history as continuous movement through era-specific manifolds, then verifies decipherment candidates with survival-aware bidirectional inference.</p>
+      <p class="hero-subtitle">This project page walks through the idea in the same order a reader needs it: why oracle decipherment is hard, what kind of data can support it, how MSEF models evolution, how CBED verifies candidates, and what evidence shows the model is learning structure.</p>
       <div class="meta-line"><span>Anonymous Authors</span><span>Anonymous Institution</span></div>
       <div class="link-row">
         <a class="pill-link" href="#" aria-label="Paper link"><i class="fa-solid fa-file-lines"></i> Paper</a>
@@ -762,33 +871,32 @@
   </header>
 
   <main class="page">
-    <section id="story" class="section">
+    <section id="abstract" class="section abstract-section">
       <div class="section-header">
         <div>
-          <div class="section-kicker">Core narrative</div>
-          <h2 class="section-title">1. From Fragmented Glyphs to a Continuous Evolution Model</h2>
+          <div class="section-kicker">Abstract</div>
+          <h2 class="section-title">1.&nbsp;Abstract</h2>
         </div>
-        <p class="section-lede">One page, one argument: problem → data → model → inference → evidence.</p>
+        <p class="section-lede">A project page should read like the paper: first explain the task, then show why the method is needed, and only then introduce the interactive and visual evidence.</p>
       </div>
-      <div class="text-flow">
-        <p>Oracle Bone decipherment is not just visual matching. A glyph may change sharply across Bronze, Seal, Clerical, and modern scripts while still belonging to one historical trajectory. MSEF models that trajectory directly instead of comparing isolated snapshots.</p>
-        <ol class="story-list">
-          <li><span class="num">01</span><span><strong>Why direct matching fails.</strong> Intermediate dynasties can introduce non-monotonic visual shifts.</span></li>
-          <li><span class="num">02</span><span><strong>Why the dataset matters.</strong> Complete five-era chains are scarce, but partial cross-era correspondences are abundant.</span></li>
-          <li><span class="num">03</span><span><strong>What MSEF learns.</strong> Each glyph becomes an era-specific manifold point, and Neural ODEs learn how points move between eras.</span></li>
-          <li><span class="num">04</span><span><strong>How inference works.</strong> CBED recalls candidates forward, removes unlikely or extinct paths, and checks candidates by tracing them backward.</span></li>
-          <li><span class="num">05</span><span><strong>Why the result is inspectable.</strong> Post-analysis tests whether the model learned paleographic structure rather than shallow pixel similarity.</span></li>
-        </ol>
+      <div class="abstract-card">
+        <p>Oracle Bone Inscription decipherment is difficult because many ancient glyphs do not map cleanly to one later script form. Existing computational methods often compare OBI with a single later period independently, but characters may change non-monotonically across Bronze, Seal, Clerical, and modern scripts. We propose the <strong>Manifold-based Script Evolution Framework (MSEF)</strong>, which models Chinese script evolution as continuous movement through era-specific manifolds. A Neural ODE learns inter-era transition dynamics, while a survival-aware bidirectional inference procedure recalls plausible candidates forward and verifies them backward. The accompanying dataset preserves fine-grained temporal, regional, and cross-era correspondences so that incomplete historical chains can still supervise the model.</p>
+      </div>
+      <div class="keypoint-strip" aria-label="Main contributions">
+        <div><span class="num">01</span><strong>Continuous evolution.</strong> Glyphs are modeled as historical trajectories.</div>
+        <div><span class="num">02</span><strong>Fine-grained data.</strong> Partial cross-era pairs become supervision.</div>
+        <div><span class="num">03</span><strong>Bidirectional inference.</strong> CBED recalls forward and verifies backward.</div>
+        <div><span class="num">04</span><strong>Mechanistic analysis.</strong> Visualizations inspect learned paleographic structure.</div>
       </div>
     </section>
 
     <section id="evolution" class="section">
       <div class="section-header">
         <div>
-          <div class="section-kicker">Interactive component</div>
-          <h2 class="section-title">2. Scrubbing Through Generated Script Evolution</h2>
+          <div class="section-kicker">Visual intuition</div>
+          <h2 class="section-title">2. Interactive Intuition: Script Evolution as a Trajectory</h2>
         </div>
-        <p class="section-lede">Select a character and move through its generated trajectory. The playback is intentionally slightly paced so readers can see structural changes.</p>
+        <p class="section-lede">This interactive component gives the intuition before the equations: the object of study is not a static glyph, but a temporally coherent path.</p>
       </div>
 
       <div class="lab-card" id="evolutionLab">
@@ -812,7 +920,7 @@
                 <button class="btn light" id="nextButton" type="button">Next <i class="fa-solid fa-forward-step"></i></button>
                 <button class="btn light" id="restartButton" type="button"><i class="fa-solid fa-rotate-right"></i> Restart</button>
               </div>
-              <p class="auto-note">Auto-preview starts when this panel enters the viewport. Reader interaction pauses it.</p>
+              <p class="auto-note">The animation starts automatically, but any manual interaction pauses it so readers can inspect a particular transition.</p>
             </div>
           </aside>
         </div>
@@ -822,14 +930,14 @@
     <section id="dataset" class="section">
       <div class="section-header">
         <div>
-          <div class="section-kicker">Dataset</div>
-          <h2 class="section-title">3. Fine-Grained Cross-Era Supervision</h2>
+          <div class="section-kicker">Data foundation</div>
+          <h2 class="section-title">3. Dataset: Turning Fragmentary History into Supervision</h2>
         </div>
-        <p class="section-lede">The dataset is what lets MSEF learn from incomplete historical chains rather than requiring every character to survive through all eras.</p>
+        <p class="section-lede">After seeing the trajectory idea, the next question is: what evidence can train it? The dataset is designed to use incomplete cross-era links rather than only rare complete chains.</p>
       </div>
       <div class="figure-grid two">
         <div class="text-flow">
-          <p>The dataset preserves era, subperiod, regional, visual, structural, semantic, contextual, and spatiotemporal signals. This allows partial correspondences to become supervision for continuous dynamics.</p>
+          <p>Historical records are incomplete, but they are not useless. The dataset keeps fine-grained era, subperiod, region, visual, structural, semantic, contextual, and spatiotemporal signals so that partial correspondences can still teach the model how glyphs evolve.</p>
           <ol class="story-list">
             <li><span class="num">01</span><span><strong>Cross-era coverage.</strong> Characters are linked across OBI, Bronze, Seal, Clerical, and Regular scripts when evidence is available.</span></li>
             <li><span class="num">02</span><span><strong>Fine-grained time.</strong> OBI groups and Bronze subperiods preserve within-era variation.</span></li>
@@ -855,49 +963,53 @@
       <div class="section-header">
         <div>
           <div class="section-kicker">Method</div>
-          <h2 class="section-title">4. Pre-Diagnosis → MSEF → CBED → Post-Analysis</h2>
+          <h2 class="section-title">4. Method: Diagnose → Model → Verify → Inspect</h2>
         </div>
-        <p class="section-lede">A compact four-stage method map. The detailed figures are organized in the next section.</p>
+        <p class="section-lede">Each component answers one reader question: why existing approaches fail, how to model evolution, how to verify a candidate, and how to inspect what was learned.</p>
       </div>
 
       <div class="method-rail">
-        <div class="method-item"><span class="num">01</span><h3>Pre-diagnosis</h3><p>Identify why direct generation, retrieval, and rule enumeration break under missing intermediate evidence.</p></div>
-        <div class="method-item"><span class="num">02</span><h3>MSEF</h3><p>Represent each glyph as an era-conditioned point and learn inter-era movement with Neural ODEs.</p></div>
-        <div class="method-item"><span class="num">03</span><h3>CBED</h3><p>Recall candidates forward, prune implausible paths, and verify cycle consistency backward.</p></div>
-        <div class="method-item"><span class="num">04</span><h3>Post-analysis</h3><p>Inspect attention, saliency, topology, and variant networks to test learned structure.</p></div>
+        <div class="method-item"><span class="num">01</span><h3>Diagnose</h3><p>Show why direct generation, retrieval, and hand-built rules break when intermediate evidence is missing.</p></div>
+        <div class="method-item"><span class="num">02</span><h3>Model</h3><p>Place each glyph in an era-conditioned manifold and learn inter-era movement with Neural ODEs.</p></div>
+        <div class="method-item"><span class="num">03</span><h3>Verify</h3><p>Recall candidates forward, prune implausible or extinct paths, and check consistency by tracing backward.</p></div>
+        <div class="method-item"><span class="num">04</span><h3>Inspect</h3><p>Use mechanistic visualizations to test whether the learned geometry reflects paleographic structure.</p></div>
       </div>
     </section>
 
     <section id="evidence" class="section">
       <div class="section-header">
         <div>
-          <div class="section-kicker">Evidence</div>
-          <h2 class="section-title">5. Manuscript Figures as a Four-Part Argument</h2>
+          <div class="section-kicker">Evidence path</div>
+          <h2 class="section-title">5. Read the Figures as the Proof of the Method</h2>
         </div>
-        <p class="section-lede">Pre and Post stay folded by default, while the central model and inference chapters remain open for immediate reading.</p>
+        <p class="section-lede">The figure groups follow the same logic as the method. Pre and Post are folded by default to keep the page readable; hover or click when you want the diagnostic and mechanistic details.</p>
       </div>
 
       <div class="chapter collapsible" tabindex="0">
         <div class="chapter-title"><h3>1. Pre-Exploratory Diagnosis</h3><span class="chapter-label">Hover to expand</span></div>
-        <p class="chapter-intro">Why a continuous model is needed: missing stages, branching variants, and rule explosion make isolated matching brittle.</p>
+        <p class="chapter-intro">These figures motivate the method: missing stages, branching variants, and rule explosion make isolated matching brittle.</p>
         <div class="figure-grid two" id="preFigures"></div>
       </div>
 
       <div class="chapter">
         <div class="chapter-title"><h3>2. MSEF: Continuous Manifold Formulation</h3><span class="chapter-label">Core model</span></div>
-        <p class="chapter-intro">The main framework, ODE dynamics, and architecture explain how glyphs move through era-specific manifolds.</p>
-        <div class="figure-grid two" id="msefFigures"></div>
+        <p class="chapter-intro">These figures show the learned state space: glyphs become era-conditioned points, and Neural ODEs describe how they move through history.</p>
+        <div class="figure-grid two" id="msefMainFigures"></div>
+        <div class="support-strip">
+          <div class="support-strip-title"><span>Supporting method diagrams</span><span>Hover to expand</span></div>
+          <div class="figure-grid two" id="msefSupportFigures"></div>
+        </div>
       </div>
 
       <div class="chapter">
         <div class="chapter-title"><h3>3. CBED: Bidirectional Decipherment</h3><span class="chapter-label">Inference</span></div>
-        <p class="chapter-intro">Forward recall finds candidates; survival-aware pruning and backward verification remove historically inconsistent matches.</p>
+        <p class="chapter-intro">These figures show the inference path: retrieve broadly first, then remove candidates that are extinct, implausible, or not reconstructable backward.</p>
         <div class="figure-grid two" id="cbedFigures"></div>
       </div>
 
       <div class="chapter collapsible" tabindex="0">
         <div class="chapter-title"><h3>4. Post-Analysis: What the Model Learns</h3><span class="chapter-label">Hover to expand</span></div>
-        <p class="chapter-intro">Mechanistic visualizations test whether the model learns paleographic structure rather than memorizing visual templates.</p>
+        <p class="chapter-intro">These figures test the learned mechanism: where the model attends, what features matter causally, and whether the learned geometry has interpretable structure.</p>
         <div class="figure-grid three" id="postFigures"></div>
       </div>
     </section>
@@ -905,10 +1017,10 @@
     <section id="plates" class="section">
       <div class="section-header">
         <div>
-          <div class="section-kicker">Visual plates</div>
-          <h2 class="section-title">6. Dense Figures Displayed Without Cropping</h2>
+          <div class="section-kicker">Large visual evidence</div>
+          <h2 class="section-title">6. Dense Figures for Close Inspection</h2>
         </div>
-        <p class="section-lede">These dense figures are shown as standalone plates. The global variant network is stitched vertically so it reads as one continuous visual, not as separated pages.</p>
+        <p class="section-lede">Some evidence is too dense for small cards. These plates are kept large so readers can inspect neighborhoods, trajectories, retrieval examples, and the global variant network.</p>
       </div>
       <div class="plates-grid" id="platesGrid"></div>
     </section>
@@ -917,9 +1029,9 @@
       <div class="section-header">
         <div>
           <div class="section-kicker">Results</div>
-          <h2 class="section-title">7. Quantitative Evidence</h2>
+          <h2 class="section-title">7. The Quantitative Results Match the Story</h2>
         </div>
-        <p class="section-lede">The visual story is backed by benchmark performance across commonly used oracle decipherment datasets and the proposed cross-era dataset.</p>
+        <p class="section-lede">The final question is whether the trajectory-based view improves decipherment. The benchmark table summarizes that comparison.</p>
       </div>
       <div class="results-table-wrap">
         <table aria-label="Oracle bone decipherment benchmark results">
@@ -972,7 +1084,7 @@
 
       const IMAGE_ROOT = './img/';
       const FRAME_TOTAL = 240;
-      const FRAME_INTERVAL_MS = 200;
+      const FRAME_INTERVAL_MS = 150;
       const PRELOAD_AHEAD = 20;
 
       const characters = [
@@ -993,43 +1105,43 @@
       ];
 
       const datasetFigures = [
-        { no: 'Data 01', src: 'Bar.png', title: 'Coverage Statistics', body: 'Complete chains are scarce, while partial pairwise evidence is abundant.' },
-        { no: 'Data 02', src: 'contextual_features.png', title: 'Feature Construction', body: 'Visual, structural, semantic, contextual, and spatiotemporal signals are combined as input evidence.' }
+        { no: 'Data 01', src: 'Bar.png', title: 'Coverage Statistics', body: 'This chart explains why the paper needs partial cross-era supervision rather than only complete five-era chains.' },
+        { no: 'Data 02', src: 'contextual_features.png', title: 'Feature Construction', body: 'This figure shows what information is preserved before the model learns evolutionary dynamics.' }
       ];
 
       const msefFigures = [
-        { no: 'MSEF 01', src: 'fig_framework_overview.png', title: 'MSEF Framework Overview', body: 'The main framework: continuous manifold evolution above, cascaded bidirectional decipherment below.', wide: true },
-        { no: 'MSEF 02', src: 'neural_ode_diagram.png', title: 'Neural ODE Dynamics', body: 'The continuous flow operator moves character representations between historical manifolds.' },
-        { no: 'MSEF 03', src: 'MSEF_Architecture_Diagram.png', title: 'Architecture', body: 'Feature extraction, manifold encoding, velocity fields, survival prediction, and verification are connected in one pipeline.' }
+        { no: 'MSEF 01', src: 'fig_framework_overview.png', title: 'MSEF Framework Overview', body: 'This is the roadmap of the method: continuous evolution creates candidates, and bidirectional verification checks them.', wide: true },
+        { no: 'MSEF 02', src: 'neural_ode_diagram.png', title: 'Neural ODE Dynamics', body: 'Neural ODEs provide the mechanism for moving a glyph representation from one historical era to another.' },
+        { no: 'MSEF 03', src: 'MSEF_Architecture_Diagram.png', title: 'Architecture', body: 'This architecture connects representation learning, transition dynamics, survival prediction, and verification.' }
       ];
 
       const preFigures = [
-        { no: 'Pre 01', src: 'pre1-abstraction.png', title: 'Invariant Core, Variant Surface', body: 'A character can preserve latent identity while its visible surface changes.' },
-        { no: 'Pre 02', src: 'pre4-clustering.png', title: 'Evolution Clusters', body: 'Recurring evolution patterns explain why some baselines fail.' },
-        { no: 'Pre 03', src: 'pre5-rule_system.png', title: 'Rule-System Explosion', body: 'Hand-built rules become difficult under variants, missing stages, and branching paths.' },
-        { no: 'Pre 04', src: 'pre6-neuralode.png', title: 'Why Neural ODEs', body: 'Continuous dynamics bridge discrete historical evidence and trajectory modeling.' }
+        { no: 'Pre 01', src: 'pre1-abstraction.png', title: 'Invariant Core, Variant Surface', body: 'The key assumption: visual form changes, but a latent character identity can persist through time.' },
+        { no: 'Pre 02', src: 'pre4-clustering.png', title: 'Evolution Clusters', body: 'Clustered evolution patterns show why a single matching rule cannot cover all glyph histories.' },
+        { no: 'Pre 03', src: 'pre5-rule_system.png', title: 'Rule-System Explosion', body: 'This motivates learning a continuous model rather than enumerating brittle expert rules.' },
+        { no: 'Pre 04', src: 'pre6-neuralode.png', title: 'Why Neural ODEs', body: 'This connects the diagnostic argument to the Neural ODE formulation.' }
       ];
 
       const cbedFigures = [
-        { no: 'CBED 01', src: 'fig3.png', title: 'Representative Trajectories', body: 'Concrete examples show that character paths can differ substantially across eras.' },
-        { no: 'CBED 02', src: 'fig4.png', title: 'Bidirectional Verification', body: 'A candidate should be plausible forward and reconstructable backward.' },
-        { no: 'CBED 03', src: 'Scenario_C_Search_Space.png', title: 'Search Space Filtering', body: 'False positives are removed from a large candidate space.' },
-        { no: 'CBED 04', src: 'extinction_landscape.png', title: 'Survival Landscape', body: 'Some glyph lines survive, split, or disappear, so survival-aware pruning is necessary.' }
+        { no: 'CBED 01', src: 'fig3.png', title: 'Representative Trajectories', body: 'Representative paths show why inference must account for character-specific trajectories.' },
+        { no: 'CBED 02', src: 'fig4.png', title: 'Bidirectional Verification', body: 'Backward checking removes candidates that look plausible only in one direction.' },
+        { no: 'CBED 03', src: 'Scenario_C_Search_Space.png', title: 'Search Space Filtering', body: 'The search-space figure shows how CBED narrows many possible matches into a smaller consistent set.' },
+        { no: 'CBED 04', src: 'extinction_landscape.png', title: 'Survival Landscape', body: 'The survival landscape explains why extinct or implausible branches should be pruned.' }
       ];
 
       const postFigures = [
-        { no: 'Post 01', src: 'heatmap.png', title: 'Attention Heatmap', body: 'Highlights glyph regions used during cross-era comparison.' },
-        { no: 'Post 02', src: 'saliency_ablation.png', title: 'Saliency Ablation', body: 'Tests whether highlighted regions are causally useful.' },
-        { no: 'Post 03', src: 'velocity_topology.png', title: 'Velocity Topology', body: 'Relates the learned vector field to interpretable manifold motion.' },
-        { no: 'Post 04', src: 'attention_circuits.png', title: 'Attention Circuits', body: 'Reveals information-routing patterns that support cross-era matching.' },
-        { no: 'Post 05', src: 'causal_patching_modified.png', title: 'Causal Patching', body: 'Perturbs internal representations to test which components support decipherment.' },
-        { no: 'Post 06', src: 'vector_arithmetic_similarity.png', title: 'Vector Arithmetic', body: 'The learned space encodes structured relations rather than isolated templates.' }
+        { no: 'Post 01', src: 'heatmap.png', title: 'Attention Heatmap', body: 'Attention maps show which parts of the glyph influence cross-era comparison.' },
+        { no: 'Post 02', src: 'saliency_ablation.png', title: 'Saliency Ablation', body: 'Ablation checks whether those highlighted regions actually matter for prediction.' },
+        { no: 'Post 03', src: 'velocity_topology.png', title: 'Velocity Topology', body: 'The vector field makes the learned transition dynamics more interpretable.' },
+        { no: 'Post 04', src: 'attention_circuits.png', title: 'Attention Circuits', body: 'Attention circuits show how information is routed during matching.' },
+        { no: 'Post 05', src: 'causal_patching_modified.png', title: 'Causal Patching', body: 'Causal patching tests which internal components are necessary for correct decipherment.' },
+        { no: 'Post 06', src: 'vector_arithmetic_similarity.png', title: 'Vector Arithmetic', body: 'Vector arithmetic tests whether the representation space contains reusable structure.' }
       ];
 
       const plates = [
-        { kind: 'single', src: 'manifold_neighborhood.png', title: 'Manifold Neighborhood Visualization', body: 'Neighboring glyphs should be visually and semantically related, making the learned manifold interpretable.' },
-        { kind: 'single', src: 'dataset_finegrained.png', title: 'Fine-Grained Evolutionary Trajectories', body: 'This dense figure demonstrates temporally fine-grained cross-era correspondences.' },
-        { kind: 'single', src: 'gallery_full.png', title: 'Comprehensive Retrieval Gallery', body: 'A qualitative gallery across many examples, complementing the benchmark table.' },
+        { kind: 'single', src: 'manifold_neighborhood.png', title: 'Manifold Neighborhood Visualization', body: 'This plate checks local geometry: nearby points should correspond to visually or semantically related glyphs.' },
+        { kind: 'single', src: 'dataset_finegrained.png', title: 'Fine-Grained Evolutionary Trajectories', body: 'This plate shows why fine-grained time matters: it preserves intermediate changes that coarse labels would hide.' },
+        { kind: 'single', src: 'gallery_full.png', title: 'Comprehensive Retrieval Gallery', body: 'This gallery lets readers inspect qualitative retrieval behavior across many cases.' },
         {
           kind: 'pages',
           title: 'Unconstrained Global Variant Network of Archaic Scripts',
@@ -1181,7 +1293,7 @@
           <article class="${classes}" data-src="${fig.src}" data-title="${fig.title}" data-caption="${fig.body}">
             <div class="figure-head"><span class="figure-no">${fig.no}</span><span class="figure-title">${fig.title}</span></div>
             <div class="figure-media"><img alt="${fig.title}"></div>
-            <div class="figure-body"><p>${fig.body}</p><div class="figure-actions"><button class="btn light small view-figure" type="button">Full scale</button></div></div>
+            <div class="figure-body"><p><span class="caption-label">Figure caption.</span> ${fig.body}</p><div class="figure-actions"><button class="btn light small view-figure" type="button">Full scale</button></div></div>
           </article>
         `;
       }
@@ -1198,7 +1310,7 @@
             return `
               <article class="plate variant-viewer" data-variant-index="${index}">
                 <div class="plate-copy">
-                  <div><h3>${plate.title}</h3><p>${plate.body}</p></div>
+                  <div><h3>${plate.title}</h3><p><span class="caption-label">Plate caption.</span> ${plate.body}</p></div>
                 </div>
                 <div class="plate-media">
                   <div class="variant-stack">
@@ -1213,7 +1325,7 @@
           return `
             <article class="plate" data-src="${plate.src}" data-title="${plate.title}" data-caption="${plate.body}">
               <div class="plate-copy">
-                <div><h3>${plate.title}</h3><p>${plate.body}</p></div>
+                <div><h3>${plate.title}</h3><p><span class="caption-label">Plate caption.</span> ${plate.body}</p></div>
                 <button class="btn light small view-figure" type="button">Full scale</button>
               </div>
               <div class="plate-media"><img alt="${plate.title}"></div>
@@ -1222,7 +1334,8 @@
       }
 
       renderFigureGroup('datasetFigures', datasetFigures);
-      renderFigureGroup('msefFigures', msefFigures);
+      renderFigureGroup('msefMainFigures', msefFigures.slice(0, 1));
+      renderFigureGroup('msefSupportFigures', msefFigures.slice(1));
       renderFigureGroup('preFigures', preFigures);
       renderFigureGroup('cbedFigures', cbedFigures);
       renderFigureGroup('postFigures', postFigures);
@@ -1242,45 +1355,70 @@
       }
       initializeFigures();
 
-      document.querySelectorAll('.chapter.collapsible').forEach(chapter => {
-        chapter.addEventListener('click', event => {
-          if (event.target.closest('.view-figure')) return;
-          chapter.classList.toggle('open');
-        });
-      });
-
 
       function initScrollMotion() {
         if (!('IntersectionObserver' in window)) return;
-
-        const sections = document.querySelectorAll('.hero, .section');
-        sections.forEach((section, sectionIndex) => {
-          section.classList.add('scroll-reveal', 'reveal-soft');
+        const animated = [];
+        document.querySelectorAll('.hero, .section').forEach((section, sectionIndex) => {
+          section.classList.add('scroll-reveal');
           section.style.setProperty('--reveal-delay', sectionIndex === 0 ? '0ms' : '40ms');
+          animated.push(section);
 
-          const children = section.querySelectorAll(
-            '.story-list li, .stat-box, .method-item, .figure-card, .plate, .char-tab'
-          );
+          const children = section.querySelectorAll('.story-list li, .stat-box, .method-item, .figure-card, .plate, .char-tab, .keypoint-strip div, .abstract-card');
           children.forEach((child, index) => {
             child.classList.add('scroll-reveal');
-            if (index % 2 === 0) child.classList.add('reveal-left');
-            else child.classList.add('reveal-right');
-            child.style.setProperty('--reveal-delay', Math.min(index * 45, 240) + 'ms');
+            child.classList.add(index % 2 === 0 ? 'reveal-left' : 'reveal-right');
+            child.style.setProperty('--reveal-delay', Math.min(index * 42, 220) + 'ms');
+            animated.push(child);
           });
         });
-
-        const revealObserver = new IntersectionObserver(entries => {
+        const observer = new IntersectionObserver(entries => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               entry.target.classList.add('in-view');
-              revealObserver.unobserve(entry.target);
+              observer.unobserve(entry.target);
             }
           });
-        }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
-
-        document.querySelectorAll('.scroll-reveal').forEach(el => revealObserver.observe(el));
+        }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+        animated.forEach(el => observer.observe(el));
       }
       initScrollMotion();
+
+
+      function initReadingProgress() {
+        const progress = document.getElementById('readingProgress');
+        const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+        const targets = navLinks
+          .map(link => document.querySelector(link.getAttribute('href')))
+          .filter(Boolean);
+
+        let ticking = false;
+        function update() {
+          const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+          const pct = maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0;
+          if (progress) progress.style.width = pct + '%';
+
+          let current = targets[0];
+          for (const target of targets) {
+            if (target.getBoundingClientRect().top <= 120) current = target;
+          }
+          navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            link.classList.toggle('active', current && href === '#' + current.id);
+          });
+          ticking = false;
+        }
+        function requestUpdate() {
+          if (!ticking) {
+            window.requestAnimationFrame(update);
+            ticking = true;
+          }
+        }
+        window.addEventListener('scroll', requestUpdate, { passive: true });
+        window.addEventListener('resize', requestUpdate);
+        update();
+      }
+      initReadingProgress();
 
       const modal = document.getElementById('figureModal');
       const modalImage = document.getElementById('modalImage');
