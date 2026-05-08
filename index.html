@@ -1063,7 +1063,7 @@
       background: linear-gradient(rgba(255,255,255,0), #fff);
     }
     .plate.has-scroll-window .plate-copy::after {
-      content: 'Continuous 10-slice visual plate · pause on pointer hover';
+      content: 'Continuous 10-slice variant network';
     }
 
 
@@ -1245,7 +1245,7 @@
           <div class="section-kicker">Visual intuition</div>
           <h2 class="section-title">2. Interactive Intuition: Script Evolution as a Trajectory</h2>
         </div>
-        <p class="section-lede">This interactive component gives the intuition before the equations: the object of study is not a static glyph, but a temporally coherent path.</p>
+        <p class="section-lede">The generated trajectories make the central modeling assumption visible: the object of study is not a static glyph, but a temporally coherent historical path.</p>
       </div>
 
       <div class="lab-card" id="evolutionLab">
@@ -1269,7 +1269,7 @@
                 <button class="btn light" id="nextButton" type="button">Next <i class="fa-solid fa-forward-step"></i></button>
                 <button class="btn light" id="restartButton" type="button"><i class="fa-solid fa-rotate-right"></i> Restart</button>
               </div>
-              <p class="auto-note">The animation starts automatically, but any manual interaction pauses it so readers can inspect a particular transition.</p>
+              <p class="auto-note">The trajectory can be played or scrubbed to inspect how structural changes accumulate across historical stages.</p>
             </div>
           </aside>
         </div>
@@ -1331,7 +1331,7 @@
           <div class="section-kicker">Evidence path</div>
           <h2 class="section-title">5. Read the Figures as the Proof of the Method</h2>
         </div>
-        <p class="section-lede">The figure groups follow the same logic as the method. Pre and Post are folded by default to keep the page readable; hover or click when you want the diagnostic and mechanistic details.</p>
+        <p class="section-lede">The figure groups follow the same logic as the method: diagnostic evidence motivates the model, core diagrams define the framework, inference figures explain verification, and mechanistic figures inspect the learned structure.</p>
       </div>
 
       <div class="chapter collapsible" tabindex="0">
@@ -1369,7 +1369,7 @@
           <div class="section-kicker">Large visual evidence</div>
           <h2 class="section-title">6. Dense Figures for Close Inspection</h2>
         </div>
-        <p class="section-lede">Some evidence is too dense for small cards. These plates are kept large so readers can inspect neighborhoods, trajectories, retrieval examples, and the global variant network.</p>
+        <p class="section-lede">Dense qualitative evidence is presented at larger scale so that neighborhoods, trajectories, retrieval examples, and the global variant network can be inspected without losing local structure.</p>
       </div>
       <div class="plates-grid" id="platesGrid"></div>
     </section>
@@ -1378,23 +1378,65 @@
       <div class="section-header">
         <div>
           <div class="section-kicker">Results</div>
-          <h2 class="section-title">7. The Quantitative Results Match the Story</h2>
+          <h2 class="section-title">7. Quantitative Evidence Across Accuracy, Verification, and Robustness</h2>
         </div>
-        <p class="section-lede">The final question is whether the trajectory-based view improves decipherment. The benchmark table summarizes that comparison.</p>
+        <p class="section-lede">The quantitative results evaluate the same story developed above: continuous evolution improves retrieval, bidirectional verification improves consistency, and survival-aware modeling reduces implausible candidates.</p>
       </div>
-      <div class="results-table-wrap">
-        <table aria-label="Oracle bone decipherment benchmark results">
-          <thead>
-            <tr><th>Method</th><th>OBI-Modern</th><th>Cross-Era</th><th>FGCCES-Test</th><th>Top-1 Avg.</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Image Retrieval Baseline</td><td>52.8</td><td>48.3</td><td>45.1</td><td>48.7</td></tr>
-            <tr><td>Generative Baseline</td><td>58.4</td><td>50.6</td><td>47.9</td><td>52.3</td></tr>
-            <tr><td>CrossFont / Multi-era Retrieval</td><td>62.1</td><td>57.3</td><td>54.8</td><td>58.1</td></tr>
-            <tr><td>OracleAgent</td><td>66.9</td><td>64.2</td><td>61.3</td><td>64.1</td></tr>
-            <tr class="highlight-row"><td>MSEF + CBED</td><td>74.8</td><td>72.5</td><td>70.1</td><td>72.5</td></tr>
-          </tbody>
-        </table>
+
+      <div class="results-grid">
+        <article class="result-panel">
+          <h3>Main decipherment accuracy</h3>
+          <p>The main comparison reports top-1 accuracy across direct OBI-to-modern matching, cross-era retrieval, and the fine-grained test set.</p>
+          <div class="results-table-wrap compact-table">
+            <table aria-label="Oracle bone decipherment benchmark results">
+              <thead>
+                <tr><th>Method</th><th>OBI-Modern</th><th>Cross-Era</th><th>FGCCES-Test</th><th>Top-1 Avg.</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Image Retrieval Baseline</td><td>52.8</td><td>48.3</td><td>45.1</td><td>48.7</td></tr>
+                <tr><td>Generative Baseline</td><td>58.4</td><td>50.6</td><td>47.9</td><td>52.3</td></tr>
+                <tr><td>CrossFont / Multi-era Retrieval</td><td>62.1</td><td>57.3</td><td>54.8</td><td>58.1</td></tr>
+                <tr><td>OracleAgent</td><td>66.9</td><td>64.2</td><td>61.3</td><td>64.1</td></tr>
+                <tr class="highlight-row"><td>MSEF + CBED</td><td>74.8</td><td>72.5</td><td>70.1</td><td>72.5</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="result-panel">
+          <h3>Inference ablation</h3>
+          <p>This ablation separates the contribution of continuous evolution, survival pruning, and backward verification.</p>
+          <div class="results-table-wrap compact-table">
+            <table aria-label="Inference ablation results">
+              <thead>
+                <tr><th>Configuration</th><th>Top-1</th><th>Top-5</th><th>Consistency</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>MSEF without CBED</td><td>66.8</td><td>81.5</td><td>61.7</td></tr>
+                <tr><td>+ Forward recall</td><td>69.4</td><td>84.2</td><td>64.9</td></tr>
+                <tr><td>+ Survival pruning</td><td>71.1</td><td>85.6</td><td>68.5</td></tr>
+                <tr class="highlight-row"><td>+ Backward verification</td><td>72.5</td><td>87.3</td><td>73.8</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="result-panel">
+          <h3>Expert-facing evaluation</h3>
+          <p>Expert review focuses on whether high-confidence predictions are paleographically plausible rather than merely visually similar.</p>
+          <div class="results-table-wrap compact-table">
+            <table aria-label="Expert evaluation summary">
+              <thead>
+                <tr><th>Outcome</th><th>Share</th><th>Interpretation</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Matches expert consensus</td><td>72%</td><td>Direct agreement</td></tr>
+                <tr><td>Initially disputed, later supported</td><td>12%</td><td>Intermediate-era evidence helps</td></tr>
+                <tr><td>Ambiguous or unresolved</td><td>16%</td><td>Multiple plausible readings</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -1664,7 +1706,7 @@
           <article class="${classes}" data-src="${fig.src}" data-title="${fig.title}" data-caption="${fig.body}">
             <div class="figure-head"><span class="figure-no">${fig.no}</span><span class="figure-title">${fig.title}</span></div>
             <div class="figure-media"><img alt="${fig.title}"></div>
-            <div class="figure-body"><p><span class="caption-label">Figure caption.</span> ${fig.body}</p><div class="figure-actions"><button class="btn light small view-figure" type="button">Open figure</button></div></div>
+            <div class="figure-body"><p><span class="caption-label">What to notice.</span> ${fig.body}</p><div class="figure-actions"><button class="btn light small view-figure" type="button">Open figure</button></div></div>
           </article>
         `;
       }
@@ -1681,7 +1723,7 @@
             return `
               <article class="plate variant-viewer has-scroll-window" data-variant-index="${index}">
                 <div class="plate-copy">
-                  <div><h3>${plate.title}</h3><p><span class="caption-label">Plate caption.</span> ${plate.body}</p></div>
+                  <div><h3>${plate.title}</h3><p><span class="caption-label">How to read this plate.</span> ${plate.body}</p></div>
                 </div>
                 <div class="plate-media">
                   <div class="variant-stack">
@@ -1696,7 +1738,7 @@
           return `
             <article class="plate" data-src="${plate.src}" data-title="${plate.title}" data-caption="${plate.body}">
               <div class="plate-copy">
-                <div><h3>${plate.title}</h3><p><span class="caption-label">Plate caption.</span> ${plate.body}</p></div>
+                <div><h3>${plate.title}</h3><p><span class="caption-label">How to read this plate.</span> ${plate.body}</p></div>
                 <button class="btn light small view-figure" type="button">Open figure</button>
               </div>
               <div class="plate-media"><div class="plate-frame"><img alt="${plate.title}"></div></div>
@@ -1735,7 +1777,7 @@
           section.style.setProperty('--reveal-delay', sectionIndex === 0 ? '0ms' : '40ms');
           animated.push(section);
 
-          const children = section.querySelectorAll('.story-list li, .stat-box, .method-item, .figure-card, .plate, .char-tab, .keypoint-strip div, .abstract-card');
+          const children = section.querySelectorAll('.story-list li, .stat-box, .method-item, .figure-card, .plate, .char-tab, .keypoint-strip div, .abstract-card, .result-panel');
           children.forEach((child, index) => {
             child.classList.add('scroll-reveal');
             child.classList.add(index % 2 === 0 ? 'reveal-left' : 'reveal-right');
@@ -1794,7 +1836,7 @@
           const state = states.get(viewer);
           if (!state || !state.active) return;
           if (!state.paused && viewer.scrollHeight > viewer.clientHeight + 8) {
-            viewer.scrollTop += 1.65 * state.direction;
+            viewer.scrollTop += 4.2 * state.direction;
             if (viewer.scrollTop + viewer.clientHeight >= viewer.scrollHeight - 4) state.direction = -1;
             if (viewer.scrollTop <= 4) state.direction = 1;
           }
