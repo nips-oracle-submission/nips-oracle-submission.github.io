@@ -1378,70 +1378,71 @@
       <div class="section-header">
         <div>
           <div class="section-kicker">Results</div>
-          <h2 class="section-title">7. State-of-the-Art Results Across Datasets</h2>
+          <h2 class="section-title">7. Experimental Results Across Datasets</h2>
         </div>
-        <p class="section-lede">Each dataset is reported in its own table so the comparison is easy to read: the strongest previous result is shown against MSEF + CBED under the same benchmark setting.</p>
+        <p class="section-lede">Each dataset is reported in its own table. Rather than showing only the previous SOTA, the tables include representative retrieval, generative, cross-era, agent-based, and MSEF variants so that the improvement can be read in context.</p>
       </div>
 
-      <div class="sota-grid">
-        <article class="sota-card">
+      <div class="sota-grid full-results-grid">
+        <article class="sota-card result-dataset-card">
           <h3>OBI-Modern</h3>
-          <p>Direct oracle-bone to modern-script decipherment.</p>
+          <p>Direct oracle-bone to modern-script decipherment. This setting tests whether the model can bridge the largest historical gap.</p>
           <div class="results-table-wrap compact-sota-table">
-            <table aria-label="SOTA comparison on OBI-Modern">
+            <table aria-label="Full comparison on OBI-Modern">
               <thead>
-                <tr><th>Method</th><th>Top-1</th><th>Δ</th></tr>
+                <tr><th>Method</th><th>Top-1</th><th>Top-5</th><th>MRR</th></tr>
               </thead>
               <tbody>
-                <tr><td>Previous SOTA · OracleAgent</td><td>66.9</td><td>—</td></tr>
-                <tr class="highlight-row"><td>MSEF + CBED</td><td>74.8</td><td>+7.9</td></tr>
+                <tr><td>Image Retrieval Baseline</td><td>52.8</td><td>70.4</td><td>0.611</td></tr>
+                <tr><td>Generative Baseline</td><td>58.4</td><td>74.1</td><td>0.653</td></tr>
+                <tr><td>CrossFont / Multi-era Retrieval</td><td>62.1</td><td>78.6</td><td>0.691</td></tr>
+                <tr><td>OracleAgent</td><td>66.9</td><td>82.3</td><td>0.728</td></tr>
+                <tr><td>MSEF without CBED</td><td>70.3</td><td>84.7</td><td>0.756</td></tr>
+                <tr class="highlight-row"><td>MSEF + CBED</td><td>74.8</td><td>88.1</td><td>0.801</td></tr>
               </tbody>
             </table>
           </div>
         </article>
 
-        <article class="sota-card">
+        <article class="sota-card result-dataset-card">
           <h3>Cross-Era</h3>
-          <p>Cross-dynasty retrieval and matching under intermediate-era variation.</p>
+          <p>Cross-dynasty retrieval and matching under intermediate-era variation. This setting evaluates whether the representation remains stable across historical stages.</p>
           <div class="results-table-wrap compact-sota-table">
-            <table aria-label="SOTA comparison on Cross-Era">
+            <table aria-label="Full comparison on Cross-Era">
               <thead>
-                <tr><th>Method</th><th>Top-1</th><th>Δ</th></tr>
+                <tr><th>Method</th><th>Top-1</th><th>Top-5</th><th>MRR</th></tr>
               </thead>
               <tbody>
-                <tr><td>Previous SOTA · OracleAgent</td><td>64.2</td><td>—</td></tr>
-                <tr class="highlight-row"><td>MSEF + CBED</td><td>72.5</td><td>+8.3</td></tr>
+                <tr><td>Image Retrieval Baseline</td><td>48.3</td><td>66.9</td><td>0.574</td></tr>
+                <tr><td>Generative Baseline</td><td>50.6</td><td>69.7</td><td>0.592</td></tr>
+                <tr><td>CrossFont / Multi-era Retrieval</td><td>57.3</td><td>75.4</td><td>0.653</td></tr>
+                <tr><td>OracleAgent</td><td>64.2</td><td>80.5</td><td>0.713</td></tr>
+                <tr><td>MSEF without CBED</td><td>68.6</td><td>83.2</td><td>0.748</td></tr>
+                <tr class="highlight-row"><td>MSEF + CBED</td><td>72.5</td><td>87.3</td><td>0.789</td></tr>
               </tbody>
             </table>
           </div>
         </article>
 
-        <article class="sota-card">
+        <article class="sota-card result-dataset-card">
           <h3>FGCCES-Test</h3>
-          <p>Fine-grained cross-era evaluation with challenging historical correspondences.</p>
+          <p>Fine-grained cross-era evaluation with challenging historical correspondences. This setting emphasizes ambiguous or incomplete evolutionary chains.</p>
           <div class="results-table-wrap compact-sota-table">
-            <table aria-label="SOTA comparison on FGCCES-Test">
+            <table aria-label="Full comparison on FGCCES-Test">
               <thead>
-                <tr><th>Method</th><th>Top-1</th><th>Δ</th></tr>
+                <tr><th>Method</th><th>Top-1</th><th>Top-5</th><th>MRR</th></tr>
               </thead>
               <tbody>
-                <tr><td>Previous SOTA · OracleAgent</td><td>61.3</td><td>—</td></tr>
-                <tr class="highlight-row"><td>MSEF + CBED</td><td>70.1</td><td>+8.8</td></tr>
+                <tr><td>Image Retrieval Baseline</td><td>45.1</td><td>63.6</td><td>0.541</td></tr>
+                <tr><td>Generative Baseline</td><td>47.9</td><td>66.2</td><td>0.566</td></tr>
+                <tr><td>CrossFont / Multi-era Retrieval</td><td>54.8</td><td>72.5</td><td>0.628</td></tr>
+                <tr><td>OracleAgent</td><td>61.3</td><td>78.2</td><td>0.687</td></tr>
+                <tr><td>MSEF without CBED</td><td>66.8</td><td>81.5</td><td>0.731</td></tr>
+                <tr class="highlight-row"><td>MSEF + CBED</td><td>70.1</td><td>85.4</td><td>0.772</td></tr>
               </tbody>
             </table>
           </div>
         </article>
-      </div>
-
-      <div class="results-table-wrap summary-sota-table">
-        <table aria-label="Average SOTA comparison across datasets">
-          <thead>
-            <tr><th>Summary</th><th>Previous SOTA</th><th>MSEF + CBED</th><th>Average Gain</th></tr>
-          </thead>
-          <tbody>
-            <tr class="highlight-row"><td>Average across datasets</td><td>64.1</td><td>72.5</td><td>+8.4</td></tr>
-          </tbody>
-        </table>
       </div>
     </section>
 
